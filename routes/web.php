@@ -28,7 +28,8 @@ Route::get('/userRegistration',[UserController::class,'RegistrationPage']);
 Route::get('/sendOtp',[UserController::class,'SendOtpPage']);
 Route::get('/verifyOtp',[UserController::class,'VerifyOTPPage']);
 Route::get('/resetPassword',[UserController::class,'ResetPasswordPage']);
+Route::post('/reset-password',[UserController::class,'ResetPassword']);
 
 Route::group(['middleware' => 'login'], function () {
-    Route::post('/reset-password',[UserController::class,'ResetPassword']);
+  //  Route::post('/reset-password',[UserController::class,'ResetPassword']);
 });

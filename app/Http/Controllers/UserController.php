@@ -53,7 +53,7 @@ class UserController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'failed',
-                'message' => 'User Registration Failed'
+                'message' => $e
             ],200);
 
         }
@@ -63,7 +63,7 @@ class UserController extends Controller
     function UserLogin(Request $request){
         $count=User::where('email','=',$request->input('email'))
              ->where('password','=',$request->input('password'))
-             ->select('id')->first();
+             ->select('id','role')->first();
 
         if($count!==null){
             // User Login-> JWT Token Issue
@@ -92,6 +92,8 @@ class UserController extends Controller
         if($count==1){
             Mail::to($email)->send(new OTPMail($otp));
             User::where('email','=',$email)->update(['otp'=>$otp]);
+            
+            $request->session()->put('email', $email);
 
             return Redirect::to('/verifyOtp')->with([
                 'status' => 'success',
@@ -109,7 +111,7 @@ class UserController extends Controller
 
 
     function VerifyOTP(Request $request){
-        $email=$request->input('email');
+        $email = $request->session()->get('email');
         $otp=$request->input('otp');
         $count=User::where('email','=',$email)
             ->where('otp','=',$otp)->count();
@@ -119,7 +121,7 @@ class UserController extends Controller
             User::where('email','=',$email)->update(['otp'=>'0']);
 
             // Pass Reset Token Issue
-            $token=JWTToken::CreateTokenForSetPassword($request->input('email'));
+            $token=JWTToken::CreateTokenForSetPassword($email);
 
             return Redirect::to('/resetPassword')->with([
                 'status' => 'success',
@@ -137,7 +139,7 @@ class UserController extends Controller
 
     function ResetPassword(Request $request){
         try{
-            $email=$request->header('email');
+            $email = $request->session()->get('email');
             $password=$request->input('password');
             User::where('email','=',$email)->update(['password'=>$password]);
 
