@@ -12,14 +12,17 @@
             Enter your email and you will get a 4 digit otp code for reset password
         </div>
         <div class="p-2">
+            <form action="{{ url('/send-otp') }}" method="POST">
+                @csrf
                 <div class="mb-4">
                     <label class="form-label">Email</label>
-                    <input id="email" placeholder="User Email" class="form-control" type="email"/>
+                    <input id="email" name="email" placeholder="User Email" class="form-control" type="email"/>
                 </div>
 
                 <div class="text-center mt-4">
-                    <button onclick="VerifyEmail()" class="btn btn-success w-100" type="submit">Request OTP</button>
+                    <button class="btn btn-success w-100" type="submit">Request OTP</button>
                 </div>
+            </form>
         </div>
 
         <div class="mt-5 text-center">
@@ -27,28 +30,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    async function VerifyEmail() {
-         let email = document.getElementById('email').value;
-         if(email.length === 0){
-            errorToast('Please enter your email address')
-         }
-         else{
-            // showLoader();
-             let res = await axios.post('/send-otp', {email: email});
-            // hideLoader();
-             if(res.status===200 && res.data['status']==='success'){
-                 successToast(res.data['message'])
-                 sessionStorage.setItem('email', email);
-                 setTimeout(function (){
-                     window.location.href = '/verifyOtp';
-                 }, 1000)
-             }
-             else{
-                 errorToast(res.data['message'])
-             }
-         }
-
-     }
- </script>

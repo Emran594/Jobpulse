@@ -64,7 +64,7 @@ class UserController extends Controller
         $count=User::where('email','=',$request->input('email'))
              ->where('password','=',$request->input('password'))
              ->select('id')->first();
- 
+
         if($count!==null){
             // User Login-> JWT Token Issue
             $token=JWTToken::CreateToken($request->input('email'),$count->id,$count->role);
@@ -78,9 +78,9 @@ class UserController extends Controller
                 'status' => 'failed',
                 'message' => 'unauthorized'
             ],200);
- 
+
         }
- 
+
      }
 
      function SendOTPCode(Request $request){
@@ -93,10 +93,10 @@ class UserController extends Controller
             Mail::to($email)->send(new OTPMail($otp));
             User::where('email','=',$email)->update(['otp'=>$otp]);
 
-            return response()->json([
+            return Redirect::to('/verifyOtp')->with([
                 'status' => 'success',
                 'message' => '4 Digit OTP Code has been send to your email !'
-            ],200);
+            ]);
         }
         else{
             return response()->json([
@@ -120,10 +120,11 @@ class UserController extends Controller
 
             // Pass Reset Token Issue
             $token=JWTToken::CreateTokenForSetPassword($request->input('email'));
-            return response()->json([
+
+            return Redirect::to('/resetPassword')->with([
                 'status' => 'success',
-                'message' => 'OTP Verification Successful',
-            ],200)->cookie('token',$token,60*24*30);
+                'message' => '4 Digit OTP Code has been send to your email !'
+            ])->cookie('token',$token,60*24*30);
 
         }
         else{
@@ -139,10 +140,11 @@ class UserController extends Controller
             $email=$request->header('email');
             $password=$request->input('password');
             User::where('email','=',$email)->update(['password'=>$password]);
-            return response()->json([
+
+            return Redirect::to('/userLogin')->with([
                 'status' => 'success',
-                'message' => 'Request Successful',
-            ],200);
+                'message' => 'Password Reset Successfully'
+            ]);
 
         }catch (Exception $exception){
             return response()->json([
