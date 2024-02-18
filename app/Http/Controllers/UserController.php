@@ -38,10 +38,10 @@ class UserController extends Controller
         return view('pages.dashboard.admin.dashboard-page');
     }
         function companyDashboard():View{
-        return view('pages.dashboard.candidate.dashboard-page');
+        return view('pages.dashboard.company.dashboard-page');
     }
         function candidatesDashboard():View{
-        return view('pages.dashboard.company.dashboard-page');
+        return view('pages.dashboard.candidate.dashboard-page');
     }
 
 
