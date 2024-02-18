@@ -31,5 +31,7 @@ Route::get('/resetPassword',[UserController::class,'ResetPasswordPage']);
 Route::post('/reset-password',[UserController::class,'ResetPassword']);
 
 Route::group(['middleware' => 'login'], function () {
-  //  Route::post('/reset-password',[UserController::class,'ResetPassword']);
+    Route::get('/companyDashboard',[UserController::class,'companyDashboard']);
+    Route::get('/adminDashboard',[UserController::class,'adminDashboard']);
+    Route::get('/candidatesDashboard',[UserController::class,'candidatesDashboard']);
 });

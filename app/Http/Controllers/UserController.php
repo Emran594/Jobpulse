@@ -34,6 +34,15 @@ class UserController extends Controller
     function ProfilePage():View{
         return view('pages.dashboard.profile-page');
     }
+    function adminDashboard():View{
+        return view('pages.dashboard.admin.dashboard-page');
+    }
+        function companyDashboard():View{
+        return view('pages.dashboard.candidate.dashboard-page');
+    }
+        function candidatesDashboard():View{
+        return view('pages.dashboard.company.dashboard-page');
+    }
 
 
     function UserRegistration(Request $request){
@@ -68,10 +77,25 @@ class UserController extends Controller
         if($count!==null){
             // User Login-> JWT Token Issue
             $token=JWTToken::CreateToken($request->input('email'),$count->id,$count->role);
-            return response()->json([
-                'status' => 'success',
-                'message' => 'User Login Successful',
-            ],200)->cookie('token',$token,time()+60*24*30);
+
+            if($count->role == 1){
+                return Redirect::to('/adminDashboard')->with([
+                    'status' => 'success',
+                    'message' => '4 Digit OTP Code has been send to your email !'
+                ],200)->cookie('token',$token,time()+60*24*30);
+            }
+            if($count->role == 2){
+                return Redirect::to('/companyDashboard')->with([
+                    'status' => 'success',
+                    'message' => '4 Digit OTP Code has been send to your email !'
+                ],200)->cookie('token',$token,time()+60*24*30);
+            }
+            if($count->role == 3){
+                return Redirect::to('/candidatesDashboard')->with([
+                    'status' => 'success',
+                    'message' => '4 Digit OTP Code has been send to your email !'
+                ],200)->cookie('token',$token,time()+60*24*30);
+            }
         }
         else{
             return response()->json([
@@ -92,7 +116,7 @@ class UserController extends Controller
         if($count==1){
             Mail::to($email)->send(new OTPMail($otp));
             User::where('email','=',$email)->update(['otp'=>$otp]);
-            
+
             $request->session()->put('email', $email);
 
             return Redirect::to('/verifyOtp')->with([
