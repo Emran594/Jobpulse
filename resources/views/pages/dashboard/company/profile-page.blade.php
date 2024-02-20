@@ -1,96 +1,123 @@
 @extends('layout.company.sidenav-layout')
 @section('content')
 <div class="page-content">
+    <div class="container-fluid">
 
-<div class="container-fluid">
-    <form action="{{ url('/updateCompany') }}" method="POST">
-        @csrf
-        <div class="row g-3">
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">Companie Information</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">CRM</a></li>
+                            <li class="breadcrumb-item active">Contacts</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
             <div class="col-lg-12">
-                <div class="text-center">
-                    <div class="position-relative d-inline-block">
-                        <div class="position-absolute bottom-0 end-0">
-                            <label for="company-logo-input" class="mb-0" data-bs-toggle="tooltip" data-bs-placement="right" title="Select Image">
-                                <div class="avatar-xs cursor-pointer">
-                                    <div class="avatar-title bg-light border rounded-circle text-muted">
-                                        <i class="ri-image-fill"></i>
-                                    </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <div class="flex-grow-1">
+                                @empty($info)
+                                <a href="{{ url('/save-page') }}" class="btn btn-primary add-btn">Save Company Information</a>
+                                @endempty
+                            </div>
+                            <div class="flex-shrink-0">
+                                <div class="hstack text-nowrap gap-2">
+                                    @isset($info)
+                                    <a href="" class="btn btn-secondary"> Update Company Information</a>
+                                    @endisset
                                 </div>
-                            </label>
-                            <input class="form-control" id="company-logo-input" name="logo" type="file" accept="image/png, image/gif, image/jpeg">
-                        </div>
-                        <div class="avatar-lg p-1">
-                            <div class="avatar-title bg-light rounded-circle">
-                                <img src="assets/images/users/multi-user.jpg" id="companylogo-img" class="avatar-md rounded-circle object-fit-cover" />
                             </div>
                         </div>
                     </div>
-                    <h5 class="fs-13 mt-3">Company Logo</h5>
-                </div>
-                <div>
-                    <label for="companyname-field" class="form-label">Name</label>
-                    <input type="text" id="companyname-field" name="name" class="form-control"required />
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div>
-                    <label for="owner-field" class="form-label">About</label>
-                    <input type="text" id="owner-field" name="description" class="form-control" @isset($info->name) value="{{ $info->description }}" @endisset required />
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div>
-                    <label for="industry_type-field" class="form-label">Industry Type</label>
-                    <select class="form-select" id="industry_type-field" name="industry_type">
-                        <option value="">Select industry type</option>
-                            <option value="1">Computer Industry</option>
-                            <option value="2">Chemical Industries</option>
-                            <option value="3">Health Services</option>
-                            <option value="4">Telecommunications Services</option>
-                            <option value="5">Textiles: Clothing, Footwear</option>
-                            <option value="6">Others</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div>
-                    <label for="location-field" class="form-label">Location</label>
-                    <input type="text" id="location-field" name="location" class="form-control" @isset($info->name) value="{{ $info->location }}" @endisset required />
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div>
-                    <label for="employee-field" class="form-label">Employee</label>
-                    <input type="text" id="employee-field" name="employee" class="form-control" @isset($info->name) value="{{ $info->employee }}" @endisset required />
-                </div>
-            </div>
+            @isset($info)
+            <div class="col-xxl-8 offset-md-2">
+                <div class="card" id="contact-view-detail">
+                    <div class="card-body text-center">
+                        <div class="position-relative d-inline-block">
+                            <img src="assets/images/users/avatar-10.jpg" alt="" class="avatar-lg rounded-circle img-thumbnail">
+                            <span class="contact-active position-absolute rounded-circle bg-success"><span class="visually-hidden"></span>
+                        </div>
+                        <h5 class="mt-4 mb-1">Tonya Noble</h5>
+                        <p class="text-muted">Nesta Technologies</p>
 
-            <div class="col-lg-6">
-                <div>
-                    <label for="contact_email-field" class="form-label">Contact Email</label>
-                    <input type="text" id="contact_email-field" name="email" class="form-control" @isset($info->name) value="{{ $info->email }}" @endisset required />
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item avatar-xs">
+                                <a href="javascript:void(0);" class="avatar-title bg-success-subtle text-success fs-15 rounded">
+                                    <i class="ri-phone-line"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item avatar-xs">
+                                <a href="javascript:void(0);" class="avatar-title bg-danger-subtle text-danger fs-15 rounded">
+                                    <i class="ri-mail-line"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item avatar-xs">
+                                <a href="javascript:void(0);" class="avatar-title bg-primary-subtle text-primary fs-15 rounded">
+                                    <i class="ri-question-answer-line"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase fw-semibold mb-3">Personal Information</h6>
+                        <p class="text-muted mb-4">Hello, I'm Tonya Noble, The most effective objective is one that is tailored to the job you are applying for. It states what kind of career you are seeking, and what skills and experiences.</p>
+                        <div class="table-responsive table-card">
+                            <table class="table table-borderless mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-medium" scope="row">Designation</td>
+                                        <td>Lead Designer / Developer</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium" scope="row">Email ID</td>
+                                        <td>tonyanoble@velzon.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium" scope="row">Phone No</td>
+                                        <td>414-453-5725</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium" scope="row">Lead Score</td>
+                                        <td>154</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium" scope="row">Tags</td>
+                                        <td>
+                                            <span class="badge bg-secondary-subtle text-secondary">Lead</span>
+                                            <span class="badge bg-secondary-subtle text-secondary">Partner</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-medium" scope="row">Last Contacted</td>
+                                        <td>15 Dec, 2021 <small class="text-muted">08:58AM</small></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+                <!--end card-->
             </div>
-            <div class="col-lg-6">
-                <div>
-                    <label for="website-field" class="form-label">Website</label>
-                    <input type="text" id="website-field" name="website" class="form-control" @isset($info->name) value="{{ $info->website }}" @endisset required />
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div>
-                    <label for="since-field" class="form-label">phone</label>
-                    <input type="text" id="since-field" name="phone" class="form-control" @isset($info->name) value="{{ $info->phone }}" @endisset required />
-                </div>
-            </div>
+            @endisset
+            <!--end col-->
         </div>
-        <div class="modal-footer">
-            <div class="hstack gap-2 justify-content-end">
-                <button type="submit" class="btn btn-success" id="add-btn">Update Profile</button>
-            </div>
-        </div>
-    </form>
-</div>
+        <!--end row-->
+
+    </div>
+    <!-- container-fluid -->
 </div>
 
 @endsection

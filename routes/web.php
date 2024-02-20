@@ -38,7 +38,8 @@ Route::group(['middleware' => 'login'], function () {
 
     Route::group(['middleware' => 'company'], function () {
         Route::get('/company-profile', [CompanyController::class,'companyProfile']);
-        Route::post('/updateCompany',[CompanyController::class,'updateCompany']);
+        Route::get('/save-page',[CompanyController::class,'savePage']);
+        Route::post('/save-info',[CompanyController::class,'saveCompany']);
     });
 });
 
