@@ -36,6 +36,8 @@ class CompanyController extends Controller
             $logo_url = null; // Set logo URL to null if no file was uploaded
         }
 
+        dd($request->all());
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',

@@ -96,7 +96,7 @@
                                 <div class="col-md-6">
                                     <div>
                                         <label for="country-Input" class="form-label">Logo <span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control" id="country-Input" placeholder="Enter country" required />
+                                        <input type="file" class="form-control" name="logo" id="country-Input" placeholder="Enter country" required />
                                     </div>
                                 </div>
 
