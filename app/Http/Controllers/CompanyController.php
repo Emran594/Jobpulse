@@ -18,6 +18,11 @@ class CompanyController extends Controller
     function savePage():View{
         return view('pages.dashboard.company.company-save');
     }
+    function updatePage($id):View{
+        $id = $id;
+        $data = Companie::where('id','=',$id)->first();
+        return view('pages.dashboard.company.company-update',compact('data'));
+    }
 
     public function saveCompany(Request $request)
     {
@@ -36,19 +41,19 @@ class CompanyController extends Controller
             $logo_url = null; // Set logo URL to null if no file was uploaded
         }
 
-        dd($request->all());
+       // dd($request->all());
 
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'industry_type' => 'required',
-            'location' => 'required',
-            'employee' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'website' => 'nullable|url',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'description' => 'required',
+        //     'industry_type' => 'required',
+        //     'location' => 'required',
+        //     'employee' => 'required',
+        //     'email' => 'required|email',
+        //     'phone' => 'required',
+        //     'website' => 'nullable|url',
+        //     'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // ]);
 
         $company = Companie::create([
             'user_id' => $user_id,
@@ -64,10 +69,51 @@ class CompanyController extends Controller
         ]);
 
         if ($company) {
-            return response()->json(['success' => 'Company profile updated successfully'], 200);
+            return redirect('/company-profile')->with('success', 'Company profile updated successfully');
         } else {
             return response()->json(['error' => 'Failed to update company profile'], 500);
         }
+    }
+
+    public function updateCompany(Request $request, $id)
+    {
+        $company = Companie::findOrFail($id);
+    
+        // Process the logo file if it's present in the request
+        if ($request->hasFile('logo')) {
+            // Delete the previous logo file from the uploads folder
+            if ($company->logo) {
+                $previousLogoPath = public_path($company->logo);
+                if (file_exists($previousLogoPath)) {
+                    unlink($previousLogoPath);
+                }
+            }
+    
+            // Upload and move the new logo file to the public/uploads directory
+            $logo = $request->file('logo');
+            $t = time();
+            $file_name = $logo->getClientOriginalName();
+            $logo_name = "{$id}-{$t}-{$file_name}";
+            $logo_url = "uploads/{$logo_name}";
+            $logo->move(public_path('uploads'), $logo_name);
+    
+            // Update the company record with the new logo URL
+            $company->logo = $logo_url;
+        }
+    
+        // Update the other fields of the company record with the new data from the request
+        $company->name = $request->input('name');
+        $company->industry_type = $request->input('industry_type');
+        $company->description = $request->input('description');
+        $company->employee = $request->input('employee');
+        $company->location = $request->input('location');
+        $company->email = $request->input('Email');
+        $company->phone = $request->input('phone');
+        $company->website = $request->input('website');
+    
+        // Save the updated company record
+        $company->save();
+        return redirect('/company-profile')->with('success', 'Company profile updated successfully');
     }
 
 

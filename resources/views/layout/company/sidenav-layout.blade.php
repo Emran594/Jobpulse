@@ -1433,7 +1433,7 @@
                   <ul class="navbar-nav" id="navbar-nav">
                       <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                       <li class="nav-item">
-                          <a class="nav-link menu-link" href="{{ url('/dashboard') }}"aria-expanded="false">
+                          <a class="nav-link menu-link" href="{{ url('/companyDashboard') }}"aria-expanded="false">
                               <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Dashboards</span>
                           </a>
                       </li>
