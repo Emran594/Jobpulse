@@ -11,13 +11,28 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     function companyProfile(Request $request):View{
-        $user_id = $request->header('id');
-        $info = Companie::where('user_id','=',$user_id)->first();
-        return view('pages.dashboard.company.profile-page',compact('info'));
+//$user_id = $request->header('id');
+      //  $info = Companie::where('user_id','=',$user_id)->first();
+        return view('pages.dashboard.company.profile-page');
     }
 
     public function updateCompany(Request $request)
     {
+        $user_id = $request->header('id');
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+
+            $t = time();
+            $file_name = $logo->getClientOriginalName();
+            $logo_name = "{$user_id}-{$t}-{$file_name}";
+            $logo_url = "uploads/{$logo_name}";
+
+            // Move the uploaded logo file to the public/uploads directory
+            $logo->move(public_path('uploads'), $logo_name);
+        } else {
+            $logo_url = null; // Set logo URL to null if no file was uploaded
+        }
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -30,37 +45,26 @@ class CompanyController extends Controller
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Get the authenticated user's ID
-        $user_id = $request->header('id');
+        $company = Companie::updateOrCreate(
+            ['user_id' => $user_id],
+            [
+                'name' => $request->input('name'),
+                'description' => $request->input('description'),
+                'industry_type' => $request->input('industry_type'),
+                'location' => $request->input('location'),
+                'employee' => $request->input('employee'),
+                'email' => $request->input('email'),
+                'phone' => $request->input('phone'),
+                'website' => $request->input('website'),
+                'logo' => $logo_url,
+            ]
+        );
 
-        // Check if the company data exists for the user
-        $company = Companie::where('user_id', $user_id)->first();
-
-        // If company data does not exist, create a new company instance
-        if (!$company) {
-            $company = new Companie();
-            $company->user_id = $user_id;
+        if ($company) {
+            return response()->json(['success' => 'Company profile updated successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Failed to update company profile'], 500);
         }
-
-        // Update company data
-        $company->name = $request->input('name');
-        $company->description = $request->input('description');
-        $company->industry_type = $request->input('industry_type');
-        $company->location = $request->input('location');
-        $company->employee = $request->input('employee');
-        $company->email = $request->input('email');
-        $company->phone = $request->input('phone');
-        $company->website = $request->input('website');
-
-        // Handle logo upload
-        if ($request->hasFile('logo')) {
-            $logoPath = $request->file('logo')->store('logos', 'public');
-            $company->logo = $logoPath;
-        }
-
-        $company->save();
-
-        return redirect()->back()->with('success', 'Company profile updated successfully.');
     }
 
 
