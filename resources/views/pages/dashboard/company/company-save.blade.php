@@ -75,7 +75,7 @@
                                 <div class="col-lg-6">
                                     <div>
                                         <label for="close-date-Input" class="form-label">Email <span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control" name="Email" data-provider="flatpickr" required />
+                                        <input type="email" class="form-control" name="email" data-provider="flatpickr" required />
                                     </div>
                                 </div>
 

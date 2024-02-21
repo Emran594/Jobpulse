@@ -1438,6 +1438,11 @@
                           </a>
                       </li>
                       <li class="nav-item">
+                          <a class="nav-link menu-link" href="{{ url('/job') }}"aria-expanded="false">
+                              <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Jobs</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
                           <a class="nav-link menu-link" href="{{ url('/company-profile') }}"aria-expanded="false">
                               <i data-feather="bx bx-copy-alt" class="bx bx-copy-alt"></i> <span data-key="t-dashboards">Profile Settings</span>
                           </a>

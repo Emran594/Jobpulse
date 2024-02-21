@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,13 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/update-page/{id}',[CompanyController::class,'updatePage']);
         Route::post('/save-info',[CompanyController::class,'saveCompany']);
         Route::post('/update-company/{id}',[CompanyController::class,'updateCompany']);
+
+
+        Route::get('/job',[JobsController::class,'jobsPage']);
+        Route::get('/job-page',[JobsController::class,'savePage']);
+        Route::post('/save-job',[JobsController::class,'saveJob']);
     });
+
+
 });
 

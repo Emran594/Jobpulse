@@ -78,7 +78,7 @@ class CompanyController extends Controller
     public function updateCompany(Request $request, $id)
     {
         $company = Companie::findOrFail($id);
-    
+
         // Process the logo file if it's present in the request
         if ($request->hasFile('logo')) {
             // Delete the previous logo file from the uploads folder
@@ -88,7 +88,7 @@ class CompanyController extends Controller
                     unlink($previousLogoPath);
                 }
             }
-    
+
             // Upload and move the new logo file to the public/uploads directory
             $logo = $request->file('logo');
             $t = time();
@@ -96,11 +96,11 @@ class CompanyController extends Controller
             $logo_name = "{$id}-{$t}-{$file_name}";
             $logo_url = "uploads/{$logo_name}";
             $logo->move(public_path('uploads'), $logo_name);
-    
+
             // Update the company record with the new logo URL
             $company->logo = $logo_url;
         }
-    
+
         // Update the other fields of the company record with the new data from the request
         $company->name = $request->input('name');
         $company->industry_type = $request->input('industry_type');
@@ -110,12 +110,11 @@ class CompanyController extends Controller
         $company->email = $request->input('Email');
         $company->phone = $request->input('phone');
         $company->website = $request->input('website');
-    
+
         // Save the updated company record
         $company->save();
         return redirect('/company-profile')->with('success', 'Company profile updated successfully');
     }
-
 
 
 }
