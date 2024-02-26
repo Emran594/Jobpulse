@@ -210,7 +210,7 @@
                                         @endif
                                         <td>
                                             <a class="" href = '{{ url('jobs.show', $job->id) }}';><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a>
-                                            <a class="edit-item-btn" href="{{ url('jobs.edit', $job->id) }}"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a>
+                                            <a class="edit-item-btn" href="{{ url('/jobs-edit', $job->id) }}"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a>
                                         </td>
                                     </tr>
                                     @endforeach

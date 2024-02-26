@@ -18,6 +18,13 @@ class JobsController extends Controller
         $category = Categorie::all();
         return view('pages.dashboard.company.job-save',compact('category'));
     }
+    function editJob(Request $request, $id):View{
+        $user_id = $request->header('id');
+        $id = $id;
+        $job = Job::where('id','=',$id)->where('user_id',$user_id)->first();
+        $categories = Categorie::all();
+        return view('pages.dashboard.company.job-update',compact('job','categories'));
+    }
 
     public function saveJob(Request $request){
         $user_id = $request->header('id');
@@ -43,6 +50,30 @@ class JobsController extends Controller
         } else {
             return response()->json(['error' => 'Failed to update company profile'], 500);
         }
+    }
+
+
+    public function updateJob(Request $request, $id){
+        $validatedData = $request->validate([
+            'title' => 'required|string',
+            'position' => 'required|string',
+            'category_id' => 'required|integer',
+            'type' => 'required|string',
+            'vacancy' => 'required|string',
+            'experience' => 'required|string',
+            'benefits' => 'required|string',
+            'requirements' => 'required|string',
+            'salary' => 'required|numeric',
+            'tags' => 'required|string',
+            'due_date' => 'required|date',
+            'is_active' => 'required|boolean',
+        ]);
+
+        $job = Job::findOrFail($id);
+
+        $job->update($validatedData);
+
+        return redirect('/job')->with('success', 'Job updated successfully');
     }
 
 

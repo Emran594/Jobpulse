@@ -1433,15 +1433,36 @@
                   <ul class="navbar-nav" id="navbar-nav">
                       <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                       <li class="nav-item">
-                          <a class="nav-link menu-link" href="{{ url('/dashboard') }}"aria-expanded="false">
+                          <a class="nav-link menu-link" href="{{ url('/candidatesDashboard') }}"aria-expanded="false">
                               <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Dashboards</span>
                           </a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link menu-link" href="{{ url('/categoryPage') }}"aria-expanded="false">
-                              <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Category</span>
+                              <i data-feather=" ri-briefcase-5-fill" class=" ri-briefcase-5-fill"></i> <span data-key="t-dashboards">JOBS</span>
                           </a>
-                      </li>
+                      </li>                      
+                      <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                            <i data-feather="ri-profile-line" class="ri-profile-line"></i> <span data-key="t-dashboards">Profile Module</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarDashboards">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"> View CV </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> Academic Information </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="index.html" class="nav-link" data-key="t-ecommerce"> Previous Experiences </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="index.html" class="nav-link" data-key="t-ecommerce"> Skills </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                   </ul>
               </div>
           </div>
