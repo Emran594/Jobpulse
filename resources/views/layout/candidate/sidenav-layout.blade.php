@@ -1449,7 +1449,7 @@
                         <div class="collapse menu-dropdown" id="sidebarDashboards">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"> View CV </a>
+                                    <a href="{{ url("/candidate-profile") }}" class="nav-link" data-key="t-analytics"> My Profile </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> Academic Information </a>

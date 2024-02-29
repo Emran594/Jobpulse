@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UserController;
@@ -57,6 +58,10 @@ Route::group(['middleware' => 'login'], function () {
     Route::group(['middleware' => 'candidate'], function () {
         
         Route::get('/candidatesDashboard', [UserController::class,'candidatesDashboard']);
+        route::get('/candidate-profile',[CandidateController::class,'candidateProfile']);
+        Route::get('/info-page',[CandidateController::class,'candidatePage']);
+        
+        Route::post('/info-save',[CandidateController::class,'saveInfo']);
 
 
     });

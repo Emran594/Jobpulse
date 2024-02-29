@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('email');
             $table->string('image')->nullable();
             $table->string('phone');
-            $table->text('career_object');
-            $table->string('resume_url');
             $table->timestamps();
 
             // Foreign key constraint

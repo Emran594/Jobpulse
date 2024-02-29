@@ -9,7 +9,7 @@ class Candidate extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id', 'first_name', 'last_name', 'address', 'email', 'image', 'phone', 'career_object', 'resume_url'
+        'user_id', 'first_name', 'last_name', 'address', 'email', 'image', 'phone',
     ];
 
     public function experiences()
@@ -32,3 +32,4 @@ class Candidate extends Model
         return $this->hasMany(JobApplication::class);
     }
 }
+
