@@ -34,7 +34,7 @@
                             <div class="flex-shrink-0">
                                 <div class="hstack text-nowrap gap-2">
                                     @isset($info)
-                                    <a href="{{ url('update-page', ['id' => $info->id]) }}" class="btn btn-secondary"> Update Information</a>
+                                    <a href="{{ url('/update-page', ['id' => $info->id]) }}" class="btn btn-secondary"> Update Information</a>
                                     @endisset
                                 </div>
                             </div>

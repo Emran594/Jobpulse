@@ -18,6 +18,11 @@ class CandidateController extends Controller
         return view('pages.dashboard.candidate.profile.info-page');
     }
 
+    public function updatePage(Request $request,$id){
+        $data = Candidate::where('id','=',$id)->first();
+        return view('pages.dashboard.candidate.profile.update-page',compact('data'));
+    }
+
     public function saveInfo(Request $request){
         $user_id = $request->header('id');
         if ($request->hasFile('image')) {
@@ -51,4 +56,42 @@ class CandidateController extends Controller
 
 
     }
+
+    public function updateCandidate(Request $request, $id)
+    {
+        $candidate = Candidate::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            if ($candidate->image) {
+                $previousImagePath = public_path($candidate->image);
+                if (file_exists($previousImagePath)) {
+                    unlink($previousImagePath);
+                }
+            }
+
+            // Upload and move the new logo file to the public/uploads directory
+            $image = $request->file('image');
+            $t = time();
+            $file_name = $image->getClientOriginalName();
+            $image_name = "{$id}-{$t}-{$file_name}";
+            $image_url = "uploads/{$image_name}";
+            $image->move(public_path('uploads'), $image_name);
+
+            // Update the company record with the new logo URL
+            $candidate->image = $image_url;
+        }
+
+        // Update the other fields of the company record with the new data from the request
+        $candidate->first_name = $request->input('first_name');
+        $candidate->last_name = $request->input('last_name');
+        $candidate->address = $request->input('address');
+        $candidate->email = $request->input('email');
+        $candidate->phone = $request->input('phone');
+
+        // Save the updated company record
+        $candidate->save();
+        return redirect('/candidate-profile')->with('success', 'Company profile updated successfully');
+    }
+
+
 }

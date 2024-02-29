@@ -1441,7 +1441,7 @@
                           <a class="nav-link menu-link" href="{{ url('/categoryPage') }}"aria-expanded="false">
                               <i data-feather=" ri-briefcase-5-fill" class=" ri-briefcase-5-fill"></i> <span data-key="t-dashboards">JOBS</span>
                           </a>
-                      </li>                      
+                      </li>
                       <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                             <i data-feather="ri-profile-line" class="ri-profile-line"></i> <span data-key="t-dashboards">Profile Module</span>
@@ -1452,13 +1452,13 @@
                                     <a href="{{ url("/candidate-profile") }}" class="nav-link" data-key="t-analytics"> My Profile </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> Academic Information </a>
+                                    <a href="{{ url('/education-page') }}" class="nav-link" data-key="t-crm"> Add Education </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="index.html" class="nav-link" data-key="t-ecommerce"> Previous Experiences </a>
+                                    <a href="{{ url('/experience-page') }}" class="nav-link" data-key="t-ecommerce">Experiences </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="index.html" class="nav-link" data-key="t-ecommerce"> Skills </a>
+                                    <a href="{{ url('/skills-page') }}" class="nav-link" data-key="t-ecommerce"> Skills </a>
                                 </li>
                             </ul>
                         </div>
@@ -1521,3 +1521,4 @@
       <script src="{{asset("assets/js/app.js")}}"></script>
   </body>
 </html>
+<img src="" alt="">

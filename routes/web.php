@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +40,7 @@ Route::group(['middleware' => 'login'], function () {
     Route::get('/adminDashboard', [UserController::class,'adminDashboard']);
 
     Route::group(['middleware' => 'company'], function () {
-        
+
         Route::get('/companyDashboard', [UserController::class,'companyDashboard']);
         Route::get('/company-profile', [CompanyController::class,'companyProfile']);
         Route::get('/save-page',[CompanyController::class,'savePage']);
@@ -56,12 +59,22 @@ Route::group(['middleware' => 'login'], function () {
 
 
     Route::group(['middleware' => 'candidate'], function () {
-        
+
         Route::get('/candidatesDashboard', [UserController::class,'candidatesDashboard']);
         route::get('/candidate-profile',[CandidateController::class,'candidateProfile']);
         Route::get('/info-page',[CandidateController::class,'candidatePage']);
-        
         Route::post('/info-save',[CandidateController::class,'saveInfo']);
+        Route::get('/update-page/{id}',[CandidateController::class,'updatePage']);
+        Route::post('/info-update/{id}',[CandidateController::class,'updateCandidate']);
+
+
+        Route::get('/education-page', [EducationController::class,'educationPage']);
+        Route::get('/experience-page', [ExperienceController::class,'experiencePage']);
+        Route::get('/skills-page', [SkillController::class,'skillPage']);
+
+        Route::get('/education-create', [EducationController::class,'educationCreate']);
+        Route::get('/experience-create', [ExperienceController::class,'experienceCreate']);
+        Route::get('/skill-create', [SkillController::class,'skillCreate']);
 
 
     });
