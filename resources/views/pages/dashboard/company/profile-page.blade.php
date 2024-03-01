@@ -43,7 +43,7 @@
                 </div>
             </div>
             @isset($info)
-            <div class="col-xxl-6 offset-md-2">
+            <div class="col-lg-12">
                 <div class="card" id="contact-view-detail">
                     <div class="card-body text-center">
                         <div class="position-relative d-inline-block">

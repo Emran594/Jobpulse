@@ -76,6 +76,15 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/experience-create', [ExperienceController::class,'experienceCreate']);
         Route::get('/skill-create', [SkillController::class,'skillCreate']);
 
+        Route::post('/save-degree',[EducationController::class,'saveEducation']);
+        Route::post('/save-experience',[ExperienceController::class,'saveExperience']);
+        Route::post('/save-skill',[SkillController::class,'saveSkill']);
+
+
+
+        Route::get('/edit-education/{id}',[EducationController::class,'editEduPage']);
+        Route::get('/delete-education/{id}',[EducationController::class,'delEducation']);
+        Route::post('/update-degree/{id}',[EducationController::class,'updateDegree']);
 
     });
 

@@ -93,15 +93,16 @@
                                                 </div>
                                             </th>
 
-                                            <th class="sort" data-sort="customer_name">Education</th>
-                                            <th class="sort" data-sort="email">Email</th>
-                                            <th class="sort" data-sort="phone">Phone</th>
-                                            <th class="sort" data-sort="date">Joining Date</th>
-                                            <th class="sort" data-sort="status">Status</th>
+                                            <th class="sort" data-sort="customer_name">Degree</th>
+                                            <th class="sort" data-sort="email">Group</th>
+                                            <th class="sort" data-sort="phone">Passing Year</th>
+                                            <th class="sort" data-sort="date">Result</th>
                                             <th class="sort" data-sort="action">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
+                                        @foreach ($education as $item)
+                                            
                                         <tr>
                                             <th scope="row">
                                                 <div class="form-check">
@@ -109,27 +110,26 @@
                                                 </div>
                                             </th>
                                             <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
-                                            <td class="customer_name">Mary Cousar</td>
-                                            <td class="email">marycousar@velzon.com</td>
-                                            <td class="phone">580-464-4694</td>
-                                            <td class="date">06 Apr, 2021</td>
-                                            <td class="status"><span class="badge bg-success-subtle text-success text-uppercase">Active</span>
-                                            </td>
+                                            <td class="customer_name">{{ $item->title }}</td>
+                                            <td class="email">{{ $item->group }}</td>
+                                            <td class="phone">{{ $item->year }}</td>
+                                            <td class="date">{{ $item->result }}</td>
                                             <td>
                                                 <ul class="list-inline hstack gap-2 mb-0">
                                                     <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Edit">
-                                                        <a href="#showModal" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
+                                                        <a href="{{ url('/edit-education',$item->id) }}" class="text-primary d-inline-block edit-item-btn">
                                                             <i class="ri-pencil-fill fs-16"></i>
                                                         </a>
                                                     </li>
                                                     <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Remove">
-                                                        <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteRecordModal">
+                                                        <a class="text-danger d-inline-block remove-item-btn" href="{{ url('/delete-education',$item->id) }}">
                                                             <i class="ri-delete-bin-5-fill fs-16"></i>
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 <div class="noresult" style="display: none">
