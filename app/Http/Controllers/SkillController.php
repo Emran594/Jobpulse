@@ -31,4 +31,40 @@ class SkillController extends Controller
             return response()->json(['error' => 'Failed to update company profile'], 500);
         }
     }
+
+    public function editSkill(Request $request,$id){
+        $user_id = $request->header('id');
+        $id = $id;
+        $skill = Skill::where('user_id','=',$user_id)->where('id','=',$id)->first();
+        return view('pages.dashboard.candidate.skill.edit-page',compact('skill'));
+    }
+
+    
+    public function updateSkill(Request $request,$id){
+        $user_id = $request->header('id');
+        $id = $id;
+        $result = Skill::where('user_id','=',$user_id)->where('id','=',$id)->update([
+            'title' => $request->input('title'),
+            'value' => $request->input('value')
+        ]);
+
+        if($result){
+            return redirect('/skills-page')->with('success', 'your Degree Added successfully');
+        } else {
+            return response()->json(['error' => 'Failed to update company profile'], 500);
+        }
+    }
+
+
+    public function delSkill(Request $request,$id){
+        $user_id = $request->header('id');
+        $id = $id;
+        $result = Skill::where('user_id','=',$user_id)->where('id','=',$id)->delete();
+
+        if($result){
+            return redirect('/skills-page')->with('success', 'your Degree Added successfully');
+        } else {
+            return response()->json(['error' => 'Failed to update company profile'], 500);
+        }
+    }
 }

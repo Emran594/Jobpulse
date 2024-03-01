@@ -86,6 +86,14 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/delete-education/{id}',[EducationController::class,'delEducation']);
         Route::post('/update-degree/{id}',[EducationController::class,'updateDegree']);
 
+        Route::get('/edit-experience/{id}',[ExperienceController::class,'editExPage']);
+        Route::get('/delete-experience/{id}',[ExperienceController::class,'delExp']);
+        Route::post('/update-experience/{id}',[ExperienceController::class,'updateExperience']);
+
+        Route::get('/edit-skill/{id}',[SkillController::class,'editSkill']);
+        Route::get('/delete-skill/{id}',[SkillController::class,'delSkill']);
+        Route::post('/update-skill/{id}',[SkillController::class,'updateSkill']);
+
     });
 
 

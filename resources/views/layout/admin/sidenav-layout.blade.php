@@ -1433,13 +1433,38 @@
                   <ul class="navbar-nav" id="navbar-nav">
                       <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                       <li class="nav-item">
-                          <a class="nav-link menu-link" href="{{ url('/dashboard') }}"aria-expanded="false">
+                          <a class="nav-link menu-link" href="{{ url('/adminDashboard') }}"aria-expanded="false">
                               <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Dashboards</span>
                           </a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link menu-link" href="{{ url('/categoryPage') }}"aria-expanded="false">
-                              <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Category</span>
+                              <i data-feather="las la-briefcase" class="las la-briefcase"></i> <span data-key="t-dashboards">Companies</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link menu-link" href="{{ url('/categoryPage') }}"aria-expanded="false">
+                              <i data-feather="lab la-slideshare" class="lab la-slideshare"></i> <span data-key="t-dashboards">Jobs</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link menu-link" href="{{ url('/categoryPage') }}"aria-expanded="false">
+                              <i data-feather="lab la-stack-exchange" class="lab la-stack-exchange"></i> <span data-key="t-dashboards">Employee</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link menu-link" href="{{ url('/categoryPage') }}"aria-expanded="false">
+                              <i data-feather="lab la-blogger" class="lab la-blogger"></i> <span data-key="t-dashboards">Blogs</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link menu-link" href="{{ url('/categoryPage') }}"aria-expanded="false">
+                              <i data-feather="lab la-pagelines" class="lab la-pagelines"></i> <span data-key="t-dashboards">Pages</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link menu-link" href="{{ url('/categoryPage') }}"aria-expanded="false">
+                              <i data-feather="las la-plug" class="las la-plug"></i> <span data-key="t-dashboards">Plugins</span>
                           </a>
                       </li>
                   </ul>
