@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function homePage(){
-
-        return view('pages.frontend.home');
+        $data = Job::with('user')->get();
+        return view('pages.frontend.home', compact('data'));
     }
     public function aboutPage(){
         return view('pages.frontend.about');

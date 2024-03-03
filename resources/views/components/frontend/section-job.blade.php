@@ -12,6 +12,8 @@
         <!-- end row -->
 
         <div class="row">
+            @isset($data)
+                
             @foreach ($data as $item)
             <div class="col-lg-6">
                 <div class="card shadow-lg">
@@ -51,7 +53,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="{{ $item->id }}" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
+                                <a href="{{ url('/apply-job',$item->id)}}" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
                                     <span class="icon-on"><i class="ri-bookmark-line">Quick Apply</i></span>
                                 </a>
                             </div>
@@ -60,6 +62,7 @@
                 </div>
             </div>
             @endforeach
+            @endisset
         </div>
     </div>
 </section>

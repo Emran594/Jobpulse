@@ -20,21 +20,21 @@
                                         <div class="col-md-auto">
                                             <div class="avatar-md">
                                                 <div class="avatar-title bg-white rounded-circle">
-                                                    <img src="assets/images/brands/slack.png" alt="" class="avatar-xs">
+                                                    <img src="{{ asset($job->company->logo)  }}" alt="" class="avatar-xs">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md">
                                             <div>
-                                                <h4 class="fw-bold mb-3">Product Designer</h4>
+                                                <h4 class="fw-bold mb-3">{{ $job->title }}</h4>
                                                 <div class="hstack gap-3 flex-wrap">
-                                                    <div><i class="ri-building-line align-bottom me-1"></i> Themesbrand</div>
+                                                    <div><i class="ri-building-line align-bottom me-1"></i> {{ $job->company->name }}</div>
                                                     <div class="vr"></div>
-                                                    <div><i class="ri-map-pin-2-line align-bottom me-1"></i> Zuweihir, UAE</div>
+                                                    <div><i class="ri-map-pin-2-line align-bottom me-1"></i> {{ $job->company->location }}</div>
                                                     <div class="vr"></div>
-                                                    <div>Post Date : <span class="fw-medium">15 Sep, 2021</span></div>
+                                                    <div>Application Deadline: <span class="fw-medium">{{ date('jS F Y', strtotime($job->due_date)) }}</span></div>
                                                     <div class="vr"></div>
-                                                    <div class="badge rounded-pill bg-success fs-12">Full Time</div>
+                                                    <div class="badge rounded-pill bg-success fs-12">{{ $job->type }}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -70,78 +70,12 @@
                     <div class="card-body">
                         <h5 class="mb-3">Job Description</h5>
 
-                        <p class="text-muted mb-2">A Product Designer of a company is responsible for the user experience of a product, which usually includes taking direction on the business goals and objectives from product management. Product Designers are typically associated with the visual or tactile aspects of a product but sometimes they can also play a role in the information architecture and system design of a product.</p>
-                        <p class="text-muted mb-4">Product designer is an exceptional career choice. The demand for product designers is increasing with each passing day but there is a huge shortage for a skilful product designer in the market. With hard work and an apt skill set, a product designer can make a handsome amount of money.</p>
-                        <div>
-                            <h5 class="mb-3">Responsibilities of Product Designer</h5>
-                            <p class="text-muted">Provided below are the responsibilities of a Product Designer:</p>
-                            <ul class="text-muted vstack gap-2">
-                                <li>
-                                    To visualise and create drawings and design concepts to determine the best product.
-                                </li>
-                                <li>
-                                    To present ideas and concepts to relevant team members for brainstorming.
-                                </li>
-                                <li>
-                                    To employ design concepts into functional prototypes.
-                                </li>
-                                <li>
-                                    To analyse, modify and revise existing designs or products and meet customer expectations.
-                                </li>
-                                <li>
-                                    To coordinate with team members and to ensure accurate efficiency in the design phase.
-                                </li>
-                                <li>Excellent attention to detail</li>
-                                <li>Meticulous and diligent</li>
-                            </ul>
-                        </div>
+                        <p class="text-muted mb-2">{{ $job->requirements }}</p>
 
                         <div>
                             <h5 class="mb-3">Skill & Experience</h5>
-                            <ul class="text-muted vstack gap-2">
-                                <li>
-                                    Communication skills
-                                <li>
-                                    Sound visualisation abilities
-                                </li>
-                                <li>
-                                    Observation skills
-                                </li>
-                                <li>
-                                    Problem-solving abilities
-                                </li>
-                                <li>
-                                    Eye for aesthetic design and understanding of customer appeal
-                                </li>
-                                <li>
-                                    Artistic & innovative flair
-                                </li>
-                                <li>
-                                    Strong knowledge of the industry & market trends
-                                </li>
-                                <li>
-                                    Relevant work experience in a particular field is mandatory
-                                </li>
-                            </ul>
+                            <p> {{ $job->benefits }}</p>
                         </div>
-
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <h5 class="mb-0">Share this job:</h5>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!" class="btn btn-icon btn-soft-info"><i class="ri-facebook-line"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!" class="btn btn-icon btn-soft-success"><i class="ri-whatsapp-line"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!" class="btn btn-icon btn-soft-secondary"><i class="ri-twitter-line"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!" class="btn btn-icon btn-soft-danger"><i class="ri-mail-line"></i></a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -156,46 +90,38 @@
                                 <tbody>
                                     <tr>
                                         <td class="fw-medium">Title</td>
-                                        <td>Product Designer</td>
+                                        <td>{{ $job->title }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">Company Name</td>
-                                        <td>Themesbrand</td>
+                                        <td>{{ $job->company->name }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">Location</td>
-                                        <td>Zuweihir, UAE</td>
+                                        <td>{{ $job->company->location }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">Time</td>
-                                        <td><span class="badge bg-success-subtle text-success">Full Time</span></td>
+                                        <td><span class="badge bg-success-subtle text-success">{{ $job->type }}</span></td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">Job Application</td>
                                         <td>54 Application</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-medium">Post Date</td>
-                                        <td>15 Sep, 2021</td>
+                                        <td class="fw-medium">Due Date</td>
+                                        <td>{{ date('jS F Y', strtotime($job->due_date)) }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">Salary</td>
-                                        <td>$35k - $45k</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-medium">Experience</td>
-                                        <td>5+ Years</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-medium">Qualification</td>
-                                        <td>Master Degree</td>
+                                        <td>{{ $job->salary }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <!--end table-->
                         </div>
                         <div class="mt-4 pt-2 hstack gap-2">
-                            <a href="#!" class="btn btn-primary w-100">Apply Now</a>
+                            <a href="{{ url('/apply-job',$job->id)}}" class="btn btn-primary w-100">Apply Now</a>
                             <a href="#!" class="btn btn-soft-danger btn-icon custom-toggle flex-shrink-0" data-bs-toggle="button">
                                 <span class="icon-on"><i class="ri-bookmark-line align-bottom"></i></span>
                                 <span class="icon-off"><i class="ri-bookmark-3-fill align-bottom"></i></span>
