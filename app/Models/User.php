@@ -15,4 +15,9 @@ class User extends Model
     protected $attributes = [
         'otp' => '0'
     ];
+
+    public function company()
+        {
+            return $this->hasOne(Companie::class);
+        }
 }

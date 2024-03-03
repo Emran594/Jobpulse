@@ -4,6 +4,7 @@ use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
@@ -21,9 +22,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.frontend.home');
-});
 Route::post('/user-registration',[UserController::class,'UserRegistration']);
 Route::post('/user-login',[UserController::class,'UserLogin']);
 Route::post('/send-otp',[UserController::class,'SendOTPCode']);
@@ -35,6 +33,12 @@ Route::get('/sendOtp',[UserController::class,'SendOtpPage']);
 Route::get('/verifyOtp',[UserController::class,'VerifyOTPPage']);
 Route::get('/resetPassword',[UserController::class,'ResetPasswordPage']);
 Route::post('/reset-password',[UserController::class,'ResetPassword']);
+
+Route::get('/about',[FrontendController::class,'aboutPage']);
+Route::get('/jobs',[FrontendController::class,'jobPage']);
+Route::get('/blog',[FrontendController::class,'blogPage']);
+Route::get('/contact',[FrontendController::class,'contactPage']);
+Route::get('/',[FrontendController::class,'homePage']);
 
 Route::group(['middleware' => 'login'], function () {
     Route::get('/adminDashboard', [UserController::class,'adminDashboard']);

@@ -39,9 +39,17 @@ class Job extends Model
     /**
      * Get the company that owns the job.
      */
+    public function user(){
+
+    return $this->belongsTo(User::class);
+
+    }
+
+
+
     public function company()
     {
-        return $this->belongsTo(Companie::class);
+        return $this->user->company();
     }
 
     /**

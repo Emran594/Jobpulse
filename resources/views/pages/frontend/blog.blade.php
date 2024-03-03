@@ -10,19 +10,6 @@
     <!-- end hero section -->
 
 
-    <!-- end features -->
-    @include('components.frontend.section-feature')
-    <!-- start services -->
-    <!-- end services -->
-    @include('components.frontend.section-category')
-    <!-- start cta -->
-
-    <!-- end cta -->
-
-
-    @include('components.frontend.section-job')
-
-
     <!-- start blog -->
 
     @include('components.frontend.section-blog')

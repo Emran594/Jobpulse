@@ -20,12 +20,8 @@
     <!-- end cta -->
 
 
-    @include('components.frontend.section-job')
-
-
     <!-- start blog -->
 
-    @include('components.frontend.section-blog')
     <!-- end blog -->
 
 
