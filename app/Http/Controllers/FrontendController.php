@@ -17,9 +17,12 @@ class FrontendController extends Controller
         return view('pages.frontend.about');
     }
     public function jobPage(){
-
         $data = Job::with('user')->get();
         return view('pages.frontend.job', compact('data'));
+    }
+    public function singleJob($id){
+        $job = Job::with('user')->find($id);
+        return view('pages.frontend.single-job', compact('job'));
     }
     public function blogPage(){
         return view('pages.frontend.blog');

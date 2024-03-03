@@ -39,6 +39,9 @@ Route::get('/jobs',[FrontendController::class,'jobPage']);
 Route::get('/blog',[FrontendController::class,'blogPage']);
 Route::get('/contact',[FrontendController::class,'contactPage']);
 Route::get('/',[FrontendController::class,'homePage']);
+Route::get('/single-job/{id}',[FrontendController::class,'singleJob']);
+
+
 
 Route::group(['middleware' => 'login'], function () {
     Route::get('/adminDashboard', [UserController::class,'adminDashboard']);

@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="ms-3 flex-grow-1">
-                                <a href="#!">
+                                <a href="{{ url('/single-job',$item->id) }}">
                                     <h5>{{ $item->title }}</h5>
                                 </a>
                                 <ul class="list-inline text-muted mb-3">

@@ -10,7 +10,7 @@
             <!--end col-->
             <div class="col-lg-4">
                 <div class="position-relative home-img text-center mt-5 mt-lg-0">
-                    <img src="assets/images/banner-1.png" alt="" class="user-img">
+                    <img src="{{ asset("assets/images/banner-1.png") }}" alt="" class="user-img">
                 </div>
             </div>
         </div>
