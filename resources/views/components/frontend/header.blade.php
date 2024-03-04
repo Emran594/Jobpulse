@@ -1,3 +1,9 @@
+@php
+use App\Helper\JWTToken;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+@endphp
+
 <nav class="navbar navbar-expand-lg navbar-landing fixed-top job-navbar" id="navbar">
     <div class="container-fluid custom-container">
         <a class="navbar-brand" href="index.html">
@@ -27,9 +33,50 @@
                 </li>
             </ul>
 
+            @if(request()->cookie('token'))
+            @php
+                $token = request()->cookie('token');
+                $key = env('JWT_KEY');
+                $userData = JWT::decode($token, new Key($key, 'HS256'));;
+            @endphp
+
+            @if ($userData && isset($userData->userRole))
+                @switch($userData->userRole)
+                    @case(1)
+                        <!-- Redirect to admin dashboard -->
+                        <div class="">
+                            <a href="{{ url('/adminDashboard') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i>Dashboard</a>
+                        </div>
+                        @break
+
+                    @case(2)
+                        <!-- Redirect to company dashboard -->
+                        <div class="">
+                            <a href="{{ url('/companyDashboard') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i>Dashboard</a>
+                        </div>
+                        @break
+
+                    @case(3)
+                        <!-- Redirect to candidate dashboard -->
+                        <div class="">
+                            <a href="{{ url('/candidatesDashboard') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i>Dashboard</a>
+                        </div>
+                        @break
+
+                    @default
+                        <!-- If role is not defined, display generic dashboard link -->
+                        <div class="">
+                            <a href="{{ url('/dashboard') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i> Dashboard</a>
+                        </div>
+                @endswitch
+            @endif
+        @else
+            <!-- If JWT token is not present, user is not authenticated -->
             <div class="">
-                <a href="{{ url('/userLogin') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i> Login & Register</a>
+                <a href="{{ url('/userLogin') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i> Login Or Registration</a>
             </div>
+        @endif
+
         </div>
 
     </div>
