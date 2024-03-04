@@ -1447,6 +1447,12 @@
                               <i data-feather="bx bx-copy-alt" class="bx bx-copy-alt"></i> <span data-key="t-dashboards">Profile Settings</span>
                           </a>
                       </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ url('/') }}"aria-expanded="false">
+                            <i data-feather="las la-plug" class="las la-plug"></i> <span data-key="t-dashboards">Visit Site</span>
+                        </a>
+                    </li>
                   </ul>
               </div>
           </div>

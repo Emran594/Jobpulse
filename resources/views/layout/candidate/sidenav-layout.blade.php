@@ -1462,6 +1462,13 @@
                                 </li>
                             </ul>
                         </div>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ url('/') }}"aria-expanded="false">
+                                <i data-feather="las la-plug" class="las la-plug"></i> <span data-key="t-dashboards">Visit Site</span>
+                            </a>
+                        </li>
                     </li>
                   </ul>
               </div>

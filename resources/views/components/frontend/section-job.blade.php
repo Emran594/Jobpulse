@@ -13,7 +13,7 @@
 
         <div class="row">
             @isset($data)
-                
+
             @foreach ($data as $item)
             @if(session('success'))
                 <div class="alert alert-success">

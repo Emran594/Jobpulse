@@ -99,14 +99,14 @@ class CandidateController extends Controller
     {
         $candidate_id = $request->header('id');
         $job_id = $id;
-    
+
         $existingApplication = JobApplication::where('job_id', $job_id)
             ->where('candidate_id', $candidate_id)
             ->exists();
         if ($existingApplication) {
-            return redirect('/jobs')->with('Error', 'You Already Apply this Position');
+            return redirect('/jobs')->with('error', 'You Already Apply this Position');
         }
-    
+
         $result = JobApplication::create([
             'job_id' => $job_id,
             'candidate_id' => $candidate_id
@@ -115,8 +115,8 @@ class CandidateController extends Controller
         if($result){
             return redirect('/jobs')->with('success', 'You Successfully Apply this job');
         }
-    
-        
+
+
     }
 
 }
