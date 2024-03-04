@@ -15,6 +15,17 @@
             @isset($data)
                 
             @foreach ($data as $item)
+            @if(session('success'))
+                <div class="alert alert-success">
+                {{ session('success') }}
+                </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
             <div class="col-lg-6">
                 <div class="card shadow-lg">
                     <div class="card-body">
@@ -53,7 +64,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="{{ url('/apply-job',$item->id)}}" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
+                                <a href="{{ url('/apply-job',$item->id)}}" class="btn btn-icon">
                                     <span class="icon-on"><i class="ri-bookmark-line">Quick Apply</i></span>
                                 </a>
                             </div>

@@ -9,7 +9,7 @@ class JobApplication extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'job_id', 'candidate_id', 'cover_letter', 'status'
+        'job_id', 'candidate_id', 'status'
     ];
 
     public function candidate()

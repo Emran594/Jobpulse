@@ -73,6 +73,8 @@ Route::group(['middleware' => 'login'], function () {
         Route::post('/info-save',[CandidateController::class,'saveInfo']);
         Route::get('/update-page/{id}',[CandidateController::class,'updatePage']);
         Route::post('/info-update/{id}',[CandidateController::class,'updateCandidate']);
+        
+        Route::get('/apply-job/{id}',[CandidateController::class,'jobApplication']);
 
 
         Route::get('/education-page', [EducationController::class,'educationPage']);
@@ -100,6 +102,7 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/edit-skill/{id}',[SkillController::class,'editSkill']);
         Route::get('/delete-skill/{id}',[SkillController::class,'delSkill']);
         Route::post('/update-skill/{id}',[SkillController::class,'updateSkill']);
+
 
     });
 

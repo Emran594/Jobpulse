@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
+use App\Models\JobApplication;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -93,5 +94,29 @@ class CandidateController extends Controller
         return redirect('/candidate-profile')->with('success', 'Company profile updated successfully');
     }
 
+
+    public function jobApplication(Request $request, $id)
+    {
+        $candidate_id = $request->header('id');
+        $job_id = $id;
+    
+        $existingApplication = JobApplication::where('job_id', $job_id)
+            ->where('candidate_id', $candidate_id)
+            ->exists();
+        if ($existingApplication) {
+            return redirect('/jobs')->with('Error', 'You Already Apply this Position');
+        }
+    
+        $result = JobApplication::create([
+            'job_id' => $job_id,
+            'candidate_id' => $candidate_id
+        ]);
+
+        if($result){
+            return redirect('/jobs')->with('success', 'You Successfully Apply this job');
+        }
+    
+        
+    }
 
 }
