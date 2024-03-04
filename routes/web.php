@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EducationController;
@@ -44,7 +45,18 @@ Route::get('/single-job/{id}',[FrontendController::class,'singleJob']);
 
 
 Route::group(['middleware' => 'login'], function () {
-    Route::get('/adminDashboard', [UserController::class,'adminDashboard']);
+    
+    Route::group(['middleware' => 'admin'], function () {
+        Route::get('/adminDashboard', [UserController::class,'adminDashboard']);
+        Route::get('/admin-company',[AdminController::class,'adminCompany']);
+        Route::get('/admin-job',[AdminController::class,'adminJob']);
+        Route::get('/admin-employe',[AdminController::class,'adminEmploye']);
+        Route::get('/admin-blog',[AdminController::class,'adminBlog']);
+        Route::get('/admin-pages',[AdminController::class,'adminPages']);
+        Route::get('/admin-plugin',[AdminController::class,'adminPlugin']);
+
+    });
+
 
     Route::group(['middleware' => 'company'], function () {
 

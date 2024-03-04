@@ -1,7 +1,18 @@
 @php
-use App\Helper\JWTToken;
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
+    use Firebase\JWT\JWT;
+    use Firebase\JWT\Key;
+
+    $token = request()->cookie('token');
+    $userData = null;
+
+    if ($token) {
+        try {
+            $key = env('JWT_KEY');
+            $userData = JWT::decode($token, new Key($key, 'HS256'));
+        } catch (Exception $e) {
+            // Handle token decoding errors gracefully if needed
+        }
+    }
 @endphp
 
 <nav class="navbar navbar-expand-lg navbar-landing fixed-top job-navbar" id="navbar">
@@ -33,13 +44,6 @@ use Firebase\JWT\Key;
                 </li>
             </ul>
 
-            @if(request()->cookie('token'))
-            @php
-                $token = request()->cookie('token');
-                $key = env('JWT_KEY');
-                $userData = JWT::decode($token, new Key($key, 'HS256'));;
-            @endphp
-
             @if ($userData && isset($userData->userRole))
                 @switch($userData->userRole)
                     @case(1)
@@ -69,15 +73,12 @@ use Firebase\JWT\Key;
                             <a href="{{ url('/dashboard') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i> Dashboard</a>
                         </div>
                 @endswitch
+            @else
+                <!-- If JWT token is not present, user is not authenticated -->
+                <div class="">
+                    <a href="{{ url('/userLogin') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i> Login Or Registration</a>
+                </div>
             @endif
-        @else
-            <!-- If JWT token is not present, user is not authenticated -->
-            <div class="">
-                <a href="{{ url('/userLogin') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i> Login Or Registration</a>
-            </div>
-        @endif
-
         </div>
-
     </div>
 </nav>
