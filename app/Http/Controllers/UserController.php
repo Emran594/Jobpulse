@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Helper\JWTToken;
 use App\Mail\OTPMail;
+use App\Models\Companie;
+use App\Models\Job;
+use App\Models\JobApplication;
 use App\Models\User;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -35,7 +38,14 @@ class UserController extends Controller
         return view('pages.dashboard.profile-page');
     }
     function adminDashboard():View{
-        return view('pages.dashboard.admin.dashboard-page');
+        $total_job = Job::count();
+        $apply_job = JobApplication::count();
+        $total_company = Companie::count();
+        return view('pages.dashboard.admin.dashboard-page', [
+            'total_job' => $total_job,
+            'apply_job' => $apply_job,
+            'total_company' => $total_company,
+        ]);
     }
         function companyDashboard():View{
         return view('pages.dashboard.company.dashboard-page');
