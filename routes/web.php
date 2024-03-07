@@ -45,7 +45,7 @@ Route::get('/single-job/{id}',[FrontendController::class,'singleJob']);
 
 
 Route::group(['middleware' => 'login'], function () {
-    
+
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/adminDashboard', [UserController::class,'adminDashboard']);
         Route::get('/admin-company',[AdminController::class,'adminCompany']);
@@ -54,6 +54,8 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/admin-blog',[AdminController::class,'adminBlog']);
         Route::get('/admin-pages',[AdminController::class,'adminPages']);
         Route::get('/admin-plugin',[AdminController::class,'adminPlugin']);
+        Route::get('/company-details/{id}',[AdminController::class,'companyDetails']);
+
 
     });
 
@@ -85,7 +87,7 @@ Route::group(['middleware' => 'login'], function () {
         Route::post('/info-save',[CandidateController::class,'saveInfo']);
         Route::get('/update-page/{id}',[CandidateController::class,'updatePage']);
         Route::post('/info-update/{id}',[CandidateController::class,'updateCandidate']);
-        
+
         Route::get('/apply-job/{id}',[CandidateController::class,'jobApplication']);
 
 
