@@ -38,6 +38,7 @@ class UserController extends Controller
         return view('pages.dashboard.profile-page');
     }
     function adminDashboard():View{
+
         $total_job = Job::count();
         $apply_job = JobApplication::count();
         $total_company = Companie::count();
@@ -47,11 +48,14 @@ class UserController extends Controller
             'total_company' => $total_company,
         ]);
     }
-        function companyDashboard():View{
+
+    function companyDashboard():View{
         return view('pages.dashboard.company.dashboard-page');
     }
-        function candidatesDashboard():View{
-        return view('pages.dashboard.candidate.dashboard-page');
+
+
+    function candidatesDashboard():View{
+     return view('pages.dashboard.candidate.dashboard-page');
     }
 
 
