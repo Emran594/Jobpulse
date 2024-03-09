@@ -119,34 +119,18 @@
                 <div class="card">
                     <div class="card-body">
                         <form>
-                            <div class="row g-3">
+                            <div class="row g-8">
                                 <div class="col-xxl-5 col-sm-6">
                                     <div class="search-box">
-                                        <input type="text" class="form-control search bg-light border-light" id="searchCompany" placeholder="Search for company, industry type...">
+                                        <input type="text" class="form-control search bg-light border-light" name="search" id="searchCompany" placeholder="Search for company, industry type..." value="{{ $search }}">
                                         <i class="ri-search-line search-icon"></i>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-xxl-3 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-light" id="datepicker" data-date-format="d M, Y" placeholder="Select date">
-                                </div>
-                                <!--end col-->
-                                <div class="col-xxl-2 col-sm-4">
-                                    <div class="input-light">
-                                        <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idType">
-                                            <option value="all" selected>All</option>
-                                            <option value="Full Time">Full Time</option>
-                                            <option value="Part Time">Part Time</option>
-                                            <option value="Internship">Internship</option>
-                                            <option value="Freelance">Freelance</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <!--end col-->
 
                                 <div class="col-xxl-2 col-sm-4">
-                                    <button type="button" class="btn btn-primary w-100" onclick="filterData();">
-                                        <i class="ri-equalizer-fill me-1 align-bottom"></i> Filters
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <i class="ri-equalizer-fill me-1 align-bottom"></i> Search
                                     </button>
                                 </div>
                                 <!--end col-->
@@ -197,25 +181,35 @@
                             <div class="align-items-center mt-4 pt-2 justify-content-between d-md-flex">
                                 <div class="flex-shrink-0 mb-2 mb-md-0">
                                     <div class="text-muted">
-                                        Showing <span class="fw-semibold">5</span> of <span class="fw-semibold">25</span> Results
+                                        Showing <span class="fw-semibold">{{ $company->firstItem() }}</span> to <span class="fw-semibold">{{ $company->lastItem() }}</span> of <span class="fw-semibold">{{ $company->total() }}</span> Results
                                     </div>
                                 </div>
                                 <ul class="pagination pagination-separated pagination-sm mb-0">
-                                    <li class="page-item disabled">
-                                        <a href="#" class="page-link">←</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link">1</a>
-                                    </li>
-                                    <li class="page-item active">
-                                        <a href="#" class="page-link">2</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link">3</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link">→</a>
-                                    </li>
+                                    @if ($company->onFirstPage())
+                                        <li class="page-item disabled">
+                                            <span class="page-link">&laquo;</span>
+                                        </li>
+                                    @else
+                                        <li class="page-item">
+                                            <a href="{{ $company->previousPageUrl() }}" class="page-link" rel="prev">&laquo;</a>
+                                        </li>
+                                    @endif
+                                
+                                    @foreach ($company->getUrlRange(1, $company->lastPage()) as $page => $url)
+                                        <li class="page-item {{ ($page == $company->currentPage()) ? 'active' : '' }}">
+                                            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                        </li>
+                                    @endforeach
+                                
+                                    @if ($company->hasMorePages())
+                                        <li class="page-item">
+                                            <a href="{{ $company->nextPageUrl() }}" class="page-link" rel="next">&raquo;</a>
+                                        </li>
+                                    @else
+                                        <li class="page-item disabled">
+                                            <span class="page-link">&raquo;</span>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -229,11 +223,11 @@
                     <div class="col-sm-6">
                         <div class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
                             <div class="page-item">
-                                <a href="" class="page-link" id="page-prev">Previous</a>
+                                <a href="{{ $company->previousPageUrl() }}" class="page-link" id="page-prev">Previous</a>
                             </div>
                             <span id="page-num" class="pagination"></span>
                             <div class="page-item">
-                                <a href="" class="page-link" id="page-next">Next</a>
+                                <a href="{{ $company->nextPageUrl() }}" class="page-link" id="page-next">Next</a>
                             </div>
                         </div>
                     </div><!-- end col -->

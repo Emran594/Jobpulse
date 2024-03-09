@@ -55,6 +55,7 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/admin-pages',[AdminController::class,'adminPages']);
         Route::get('/admin-plugin',[AdminController::class,'adminPlugin']);
         Route::get('/company-details/{id}',[AdminController::class,'companyDetails']);
+        Route::get('/job-details/{id}',[AdminController::class,'jobDetails']);
 
 
     });
