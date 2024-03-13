@@ -49,8 +49,15 @@ class UserController extends Controller
         ]);
     }
 
-    function companyDashboard():View{
-        return view('pages.dashboard.company.dashboard-page');
+    function companyDashboard(Request $request):View{
+        $user_id = $request->header('id');
+        $total_job = Job::where('user_id', $user_id)->count();
+        $apply_job = JobApplication::count();
+        $total_company = Companie::count();
+        return view('pages.dashboard.company.dashboard-page',[
+            'total_job' => $total_job,
+            'apply_job' => $apply_job
+        ]);
     }
 
 

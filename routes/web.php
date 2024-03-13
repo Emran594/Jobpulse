@@ -76,6 +76,8 @@ Route::group(['middleware' => 'login'], function () {
         Route::post('/save-job',[JobsController::class,'saveJob']);
         Route::get('/jobs-edit/{id}',[JobsController::class,'editJob']);
         Route::post('/job-update/{id}',[JobsController::class,'updateJob']);
+        Route::get('/jobs-show/{id}',[JobsController::class,'jobsShow']);
+
     });
 
 

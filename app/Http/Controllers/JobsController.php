@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use App\Models\Job;
+use App\Models\JobApplication;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -74,6 +75,12 @@ class JobsController extends Controller
         $job->update($validatedData);
 
         return redirect('/job')->with('success', 'Job updated successfully');
+    }
+
+    public function jobsShow($id){
+        $job = Job::where('id','=',$id)->first();
+        $applicationCount = $job->jobApplications()->count();
+        return view('pages.dashboard.company.job-details',compact('job','applicationCount'));
     }
 
 
