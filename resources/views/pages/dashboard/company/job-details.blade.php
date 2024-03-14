@@ -98,8 +98,8 @@
                                         <td><span class="badge bg-success-subtle text-success">{{ $job->type }}</span></td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-medium">Job Application</td>
-                                        <td> <a href="{{  }}" class="btn btn-success">{{ $applicationCount }}</a> </td>
+                                        <td class="fw-medium"> <a href="{{ url('/applicant-list',$job->id) }}">Total Applications</a></td>
+                                        <td> <a href="" class="btn btn-success">{{ $applicationCount }}</a> </td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">Due Date</td>

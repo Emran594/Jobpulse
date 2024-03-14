@@ -83,5 +83,10 @@ class JobsController extends Controller
         return view('pages.dashboard.company.job-details',compact('job','applicationCount'));
     }
 
+    public function applicantList($id){
+        $applicant = JobApplication::where('job_id','=',$id)->get();
+        return view('pages.dashboard.company.applicant-list',compact('applicant'));
+    }
+
 
 }
