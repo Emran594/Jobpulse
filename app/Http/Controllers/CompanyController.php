@@ -10,18 +10,21 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    function companyProfile(Request $request):View{
+    function companyProfile(Request $request): View
+    {
         $user_id = $request->header('id');
-        $info = Companie::where('user_id','=',$user_id)->first();
-        return view('pages.dashboard.company.profile-page',compact('info'));
+        $info = Companie::where('user_id', '=', $user_id)->first();
+        return view('pages.dashboard.company.profile-page', compact('info'));
     }
-    function savePage():View{
+    function savePage(): View
+    {
         return view('pages.dashboard.company.company-save');
     }
-    function updatePage($id):View{
+    function updatePage($id): View
+    {
         $id = $id;
-        $data = Companie::where('id','=',$id)->first();
-        return view('pages.dashboard.company.company-update',compact('data'));
+        $data = Companie::where('id', '=', $id)->first();
+        return view('pages.dashboard.company.company-update', compact('data'));
     }
 
     public function saveCompany(Request $request)
@@ -41,19 +44,6 @@ class CompanyController extends Controller
             $logo_url = null; // Set logo URL to null if no file was uploaded
         }
 
-       // dd($request->all());
-
-        // $request->validate([
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'industry_type' => 'required',
-        //     'location' => 'required',
-        //     'employee' => 'required',
-        //     'email' => 'required|email',
-        //     'phone' => 'required',
-        //     'website' => 'nullable|url',
-        //     'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        // ]);
 
         $company = Companie::create([
             'user_id' => $user_id,
@@ -115,6 +105,4 @@ class CompanyController extends Controller
         $company->save();
         return redirect('/company-profile')->with('success', 'Company profile updated successfully');
     }
-
-
 }

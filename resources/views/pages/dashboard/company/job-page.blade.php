@@ -14,6 +14,7 @@
                             <li class="breadcrumb-item active">Tickets List</li>
                         </ol>
                     </div>
+                    </div>
 
                 </div>
             </div>

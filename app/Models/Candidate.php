@@ -12,24 +12,27 @@ class Candidate extends Model
         'user_id', 'first_name', 'last_name', 'address', 'email', 'image', 'phone',
     ];
 
+
+
+    public function jobApplications()
+     {
+     return $this->hasMany(JobApplication::class);
+    }
+
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class, 'user_id', 'user_id');
+    }
+
     public function experiences()
     {
-        return $this->hasMany(Experience::class);
+        return $this->hasMany(Experience::class, 'user_id', 'user_id');
     }
 
     public function educations()
     {
-        return $this->hasMany(Education::class);
-    }
-
-    public function skills()
-    {
-        return $this->hasMany(Skill::class);
-    }
-
-    public function jobApplications()
-    {
-        return $this->hasMany(JobApplication::class);
+        return $this->hasMany(Education::class, 'user_id', 'user_id');
     }
 }
 

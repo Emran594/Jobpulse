@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplicationStatus;
+use App\Models\Candidate;
 use App\Models\Categorie;
+use App\Models\Education;
+use App\Models\Experience;
 use App\Models\Job;
 use App\Models\JobApplication;
+use App\Models\Skill;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -83,10 +88,28 @@ class JobsController extends Controller
         return view('pages.dashboard.company.job-details',compact('job','applicationCount'));
     }
 
-    public function applicantList($id){
-        $applicant = JobApplication::where('job_id','=',$id)->get();
-        return view('pages.dashboard.company.applicant-list',compact('applicant'));
+    public function applicantList(Request $request, $id) {
+        $search = $request->input('search', '');
+    
+        $query = JobApplication::query()
+            ->where('id', $id)
+            ->with(['candidate', 'job']);
+    
+        if ($search) {
+            $query->whereHas('candidate', function ($query) use ($search) {
+                $query->where('first_name', 'like', "%$search%");
+            });
+        }
+    
+        $applicants = $query->paginate(10);
+        $count_applicants = $query->count();
+    
+        return view('pages.dashboard.company.applicant-list', compact('applicants', 'count_applicants', 'search'));
     }
 
+    public function applicantCV($id){
+        $candidate = Candidate::with('skills', 'experiences', 'educations')->findOrFail($id);
+        return view('pages.dashboard.company.applicant-cv', compact('candidate'));
+    }
 
 }

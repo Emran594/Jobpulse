@@ -32,7 +32,9 @@
                         <div class="d-flex">
                             <div class="avatar-sm">
                                 <div class="avatar-title bg-warning-subtle rounded">
+                                    @isset($item->company->logo)
                                     <img src="{{ $item->company->logo }}" alt="" class="avatar-xxs">
+                                    @endisset
                                 </div>
                             </div>
                             <div class="ms-3 flex-grow-1">

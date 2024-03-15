@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('application_status', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('job_application_id');
+            $table->unsignedBigInteger('candidate_id');
             $table->foreign('job_application_id')->references('id')->on('job_applications')->onDelete('cascade');
+            $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade');
             $table->enum('status', ['rejected', 'hired']);
             $table->timestamps();
         });
