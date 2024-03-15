@@ -92,7 +92,7 @@ class JobsController extends Controller
         $search = $request->input('search', '');
     
         $query = JobApplication::query()
-            ->where('id', $id)
+            ->where('job_id', $id)
             ->with(['candidate', 'job']);
     
         if ($search) {
