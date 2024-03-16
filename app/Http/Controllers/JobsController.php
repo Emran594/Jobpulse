@@ -90,20 +90,26 @@ class JobsController extends Controller
 
     public function applicantList(Request $request, $id) {
         $search = $request->input('search', '');
-    
+
+        // Query to retrieve job applications with related candidates and jobs
         $query = JobApplication::query()
             ->where('job_id', $id)
             ->with(['candidate', 'job']);
-    
+
+        // If search term is provided, filter candidates by first name
         if ($search) {
             $query->whereHas('candidate', function ($query) use ($search) {
                 $query->where('first_name', 'like', "%$search%");
             });
         }
-    
-        $applicants = $query->paginate(10);
-        $count_applicants = $query->count();
-    
+
+        // Paginate the results
+        $applicants = $query->paginate(5);
+
+        // Get the count of applicants
+        $count_applicants = $applicants->total(); // Use total() method instead of count()
+
+        // Pass data to the view
         return view('pages.dashboard.company.applicant-list', compact('applicants', 'count_applicants', 'search'));
     }
 
