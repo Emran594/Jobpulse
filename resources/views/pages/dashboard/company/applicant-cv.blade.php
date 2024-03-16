@@ -17,14 +17,14 @@
 								    <li><a class="text-link" href="#"><i class="fas fa-mobile-alt fa-fw me-2" data-fa-transform="grow-6"></i>{{$candidate->phone}}</a></li>
 							    </ul>
 						    </div>
-					    </div>					    
+					    </div>
 				    </div>
                     <div class="col">
                         <div class="row p-4 justify-content-center justify-content-md-between">
-                            <h2><a class="btn btn-success" href="{{ url('/hired',$candidate->id) }}">Hire This Candidate</a></h2>
+                            <h2><a class="btn btn-success" href="{{ url('/job') }}">Back To Job</a></h2>
                         </div>
                     </div>
-                    
+
 			    </div><!--//row-->
 		    </header>
 		    <div class="resume-body p-5">
@@ -42,7 +42,7 @@
 							    <div class="resume-timeline position-relative">
                                     @foreach ($candidate->experiences as $experience)
 								    <article class="resume-timeline-item position-relative pb-5">
-									    
+
 									    <div class="resume-timeline-item-header mb-2">
 										    <div class="d-flex flex-column flex-md-row">
 										        <h3 class="resume-position-title font-weight-bold mb-1">{{ $experience->title }}</h3>
@@ -57,8 +57,8 @@
 									    </div>
 
 								    </article>
-                                    @endforeach					    
-							    </div>		    
+                                    @endforeach
+							    </div>
 						    </div>
 					    </section><!--//experience-section-->
 				    </div>
@@ -80,13 +80,13 @@
                                 @endforeach
                             </div>
                         </section>
-                        
-                        
+
+
 					    <section class="resume-section education-section mb-5">
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
 						    <div class="resume-section-content">
 							    <ul class="list-unstyled">
-                                    @foreach ($candidate->educations as $education)                                       
+                                    @foreach ($candidate->educations as $education)
 								    <li class="mb-2">
 								        <div class="resume-degree font-weight-bold">{{ $education->title }}</div>
 								        <div class="resume-degree-org">{{ $education->group }}</div>
@@ -97,7 +97,7 @@
 							    </ul>
 						    </div>
 					    </section>
-					    
+
 				    </div>
 			    </div><!--//row-->
 		    </div>

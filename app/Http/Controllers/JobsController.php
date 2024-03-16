@@ -105,12 +105,13 @@ class JobsController extends Controller
 
         // Paginate the results
         $applicants = $query->paginate(5);
+        $jobTitle = $applicants->first()->job->title;
 
         // Get the count of applicants
         $count_applicants = $applicants->total(); // Use total() method instead of count()
 
         // Pass data to the view
-        return view('pages.dashboard.company.applicant-list', compact('applicants', 'count_applicants', 'search'));
+        return view('pages.dashboard.company.applicant-list', compact('applicants', 'count_applicants', 'search','jobTitle'));
     }
 
     public function applicantCV($id){

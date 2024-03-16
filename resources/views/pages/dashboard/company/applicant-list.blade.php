@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Applicant List of</h4>
+                    <h4 class="mb-sm-0">Applicant List for {{ $jobTitle }}</h4>
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Companies</a></li>
@@ -53,6 +53,7 @@
                                         <th>Candidate Name</th>
                                         <th>Phone</th>
                                         <th>Reject</th>
+                                        <th>Hired</th>
                                         <th>View</th>
                                     </tr>
                                 </thead>
@@ -75,7 +76,10 @@
                                             <h6 class="mb-0">{{ $item->candidate->phone}}</h6>
                                         </td>
                                         <td>
-                                            <a class="btn btn-danger" href="{{ url('/reject-application', $item->id) }}" class="btn btn-link btn-sm">Reject Application <i class="ri-arrow-right-line align-bottom"></i></a>
+                                            <a class="btn btn-danger" href="{{ url('/reject-application', $item->id) }}" class="btn btn-link btn-sm">Reject </i></a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary" href="{{ url('/reject-application', $item->id) }}" class="btn btn-link btn-sm">Hired </i></a>
                                         </td>
                                         <td>
                                             <a class="btn btn-success" href="{{ url('/applicant-cv', $item->candidate->id) }}" class="btn btn-link btn-sm">View details <i class="ri-arrow-right-line align-bottom"></i></a>
