@@ -12,6 +12,7 @@ class ApplicationStatus extends Model
 
     protected $fillable = [
         'job_application_id',
+        'candidate_id',
         'status',
     ];
 

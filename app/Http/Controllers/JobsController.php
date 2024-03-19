@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\HiredNotification;
 use App\Models\ApplicationStatus;
 use App\Models\Candidate;
 use App\Models\Categorie;
@@ -12,6 +13,7 @@ use App\Models\JobApplication;
 use App\Models\Skill;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class JobsController extends Controller
 {
@@ -91,12 +93,10 @@ class JobsController extends Controller
     public function applicantList(Request $request, $id) {
         $search = $request->input('search', '');
 
-        // Query to retrieve job applications with related candidates and jobs
         $query = JobApplication::query()
             ->where('job_id', $id)
             ->with(['candidate', 'job']);
 
-        // If search term is provided, filter candidates by first name
         if ($search) {
             $query->whereHas('candidate', function ($query) use ($search) {
                 $query->where('first_name', 'like', "%$search%");
@@ -107,16 +107,43 @@ class JobsController extends Controller
         $applicants = $query->paginate(5);
         $jobTitle = $applicants->first()->job->title;
 
-        // Get the count of applicants
-        $count_applicants = $applicants->total(); // Use total() method instead of count()
+        $count_applicants = $applicants->total(); 
 
-        // Pass data to the view
         return view('pages.dashboard.company.applicant-list', compact('applicants', 'count_applicants', 'search','jobTitle'));
     }
 
-    public function applicantCV($id){
+    public function applicantCV($id,$job_id){
+        $job_id = $job_id;
         $candidate = Candidate::with('skills', 'experiences', 'educations')->findOrFail($id);
-        return view('pages.dashboard.company.applicant-cv', compact('candidate'));
+        return view('pages.dashboard.company.applicant-cv', compact('candidate','job_id'));
+    }
+
+    public function hireCandidate($candidate_id, $job_id)
+    {
+        $candidate = Candidate::find($candidate_id);
+    
+            ApplicationStatus::create([
+                'job_application_id' => $job_id,
+                'candidate_id' => $candidate_id,
+                'status' => 'hired',
+            ]);
+        
+        $candidateEmail = $candidate->email;
+        $candidateName = $candidate->first_name;
+
+        
+        Mail::to($candidateEmail)->send(new HiredNotification($candidateName));
+    
+    }
+    public function rejectApplication($candidate_id, $job_id)
+    {
+    
+            ApplicationStatus::create([
+                'job_application_id' => $job_id,
+                'candidate_id' => $candidate_id,
+                'status' => 'rejected',
+            ]);
+    
     }
 
 }

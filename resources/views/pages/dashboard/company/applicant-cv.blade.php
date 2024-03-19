@@ -21,7 +21,7 @@
 				    </div>
                     <div class="col">
                         <div class="row p-4 justify-content-center justify-content-md-between">
-                            <h2><a class="btn btn-success" href="{{ url('/job') }}">Back To Job</a></h2>
+                            <h2><a class="btn btn-success" href="{{ url('hired-candidate', ['candidate_id' => $candidate->id, 'job_id' => $job_id]) }}">Hire This Candidate</a></h2>
                         </div>
                     </div>
 

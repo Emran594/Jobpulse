@@ -78,7 +78,9 @@ Route::group(['middleware' => 'login'], function () {
         Route::post('/job-update/{id}',[JobsController::class,'updateJob']);
         Route::get('/jobs-show/{id}',[JobsController::class,'jobsShow']);
         Route::get('/applicant-list/{id}',[JobsController::class,'applicantList']);
-        Route::get('/applicant-cv/{id}',[JobsController::class,'applicantCV']);
+        Route::get('/applicant-cv/{id}/{job_id}',[JobsController::class,'applicantCV']);
+        Route::get('/hired-candidate/{candidate_id}/{job_id}',[JobsController::class,'hireCandidate']);
+        Route::get('/reject-application/{candidate_id}/{job_id}',[JobsController::class,'rejectApplication']);
 
 
     });

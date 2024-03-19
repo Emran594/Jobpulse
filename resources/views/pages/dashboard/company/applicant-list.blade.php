@@ -53,7 +53,6 @@
                                         <th>Candidate Name</th>
                                         <th>Phone</th>
                                         <th>Reject</th>
-                                        <th>Hired</th>
                                         <th>View</th>
                                     </tr>
                                 </thead>
@@ -76,13 +75,10 @@
                                             <h6 class="mb-0">{{ $item->candidate->phone}}</h6>
                                         </td>
                                         <td>
-                                            <a class="btn btn-danger" href="{{ url('/reject-application', $item->id) }}" class="btn btn-link btn-sm">Reject </i></a>
+                                            <a class="btn btn-danger" href="{{ url('/reject-application', ['candidate_id' => $item->candidate->id, 'job_id' => $item->job->id]) }}" class="btn btn-link btn-sm">Reject </i></a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary" href="{{ url('/reject-application', $item->id) }}" class="btn btn-link btn-sm">Hired </i></a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" href="{{ url('/applicant-cv', $item->candidate->id) }}" class="btn btn-link btn-sm">View details <i class="ri-arrow-right-line align-bottom"></i></a>
+                                            <a class="btn btn-success" href="{{ url('/applicant-cv', ['candidate_id' => $item->candidate->id, 'job_id' => $item->job->id]) }}" class="btn btn-link btn-sm">View details <i class="ri-arrow-right-line align-bottom"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
