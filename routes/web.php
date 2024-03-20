@@ -66,7 +66,7 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/companyDashboard', [UserController::class,'companyDashboard']);
         Route::get('/company-profile', [CompanyController::class,'companyProfile']);
         Route::get('/save-page',[CompanyController::class,'savePage']);
-        Route::get('/update-page/{id}',[CompanyController::class,'updatePage']);
+        Route::get('/update-company/{id}',[CompanyController::class,'updatePage']);
         Route::post('/save-info',[CompanyController::class,'saveCompany']);
         Route::post('/update-company/{id}',[CompanyController::class,'updateCompany']);
 
@@ -95,6 +95,11 @@ Route::group(['middleware' => 'login'], function () {
         Route::post('/info-save',[CandidateController::class,'saveInfo']);
         Route::get('/update-page/{id}',[CandidateController::class,'updatePage']);
         Route::post('/info-update/{id}',[CandidateController::class,'updateCandidate']);
+
+
+        Route::get('/applied-jobs',[CandidateController::class,'myJobs']);
+
+
 
         Route::get('/apply-job/{id}',[CandidateController::class,'jobApplication']);
 

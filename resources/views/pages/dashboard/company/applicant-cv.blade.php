@@ -2,6 +2,11 @@
 @section('content')
     <div class="page-content">
         <div class="container-fuild">
+            @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+            @endif
             <header class="resume-header pb-3 mb-3">
 			    <div class="row">
 				    <div class="col-block col-md-auto resume-picture-holder text-center text-md-start">

@@ -1,4 +1,4 @@
-@extends('layout.company.sidenav-layout')
+@extends('layout.candidate.sidenav-layout')
 @section('content')
 <div class="page-content">
     <div class="container-fluid">
@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Tickets List</h4>
+                    <h4 class="mb-sm-0">Applied Job List</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
@@ -25,11 +25,8 @@
                 <div class="card" id="ticketsList">
                     <div class="card-header border-0">
                         <div class="d-flex align-items-center">
-                            <h5 class="card-title mb-0 flex-grow-1">Jobs</h5>
+                            <h5 class="card-title mb-0 flex-grow-1">My All Jobs</h5>
                             <div class="flex-shrink-0">
-                                <div class="d-flex flex-wrap gap-2">
-                                <a href="{{ url('/job-page') }}" class="btn btn-primary add-btn"><i class="ri-add-line align-bottom me-1"></i> Post Job</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -102,19 +99,14 @@
                                             </div>
                                         </th>
                                         <td class="id"><a href="javascript:void(0);" onclick="ViewJobs(this)" data-id="{{ $job->id }}" class="fw-medium link-primary">#{{ $job->id }}</a></td>
-                                        <td class="tasks_name">{{ $job->title }}</td>
-                                        <td class="client_name">{{ $job->position }}</td>
-                                        <td class="assignedto">{{ $job->type }}</td>
-                                        <td class="create_date">{{ $job->vacancy }}</td>
-                                        <td class="due_date">{{ $job->salary }}</td>
-                                        @if ($job->is_active == true )
-                                        <td class="priority"><span class="badge bg-success text-uppercase">{{ "Active"}}</span></td>
-                                        @else
-                                        <td class="priority"><span class="badge bg-danger text-uppercase">{{"In Active" }}</span></td>
-                                        @endif
+                                        <td class="tasks_name">{{ $job->job->title }}</td>
+                                        <td class="client_name">{{ $job->job->position }}</td>
+                                        <td class="assignedto">{{ $job->job->type }}</td>
+                                        <td class="create_date">{{ $job->job->vacancy }}</td>
+                                        <td class="due_date">{{ $job->job->salary }}</td>
+                                        <td class="priority"><span class="badge bg-success text-uppercase">{{ $job->status }}</span></td>
                                         <td>
-                                            <a class="" href = '{{ url('/jobs-show', $job->id) }}';><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a>
-                                            <a class="edit-item-btn" href="{{ url('/jobs-edit', $job->id) }}"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a>
+                                            <a class="" href = '{{ url('/single-job', $job->id) }}';><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -151,5 +143,4 @@
     </div>
     <!-- container-fluid -->
 </div>
-
 @endsection

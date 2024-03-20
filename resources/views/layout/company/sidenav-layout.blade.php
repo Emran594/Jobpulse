@@ -1058,47 +1058,6 @@
                               <div
                                 class="text-reset notification-item d-block dropdown-item"
                               >
-                                <div class="d-flex">
-                                  <img
-                                    src="{{ asset("assets/images/users/avatar-8.jpg") }}"
-                                    class="me-3 rounded-circle avatar-xs"
-                                    alt="user-pic"
-                                  />
-                                  <div class="flex-grow-1">
-                                    <a href="#!" class="stretched-link">
-                                      <h6 class="mt-0 mb-1 fs-13 fw-semibold">
-                                        Maureen Gibson
-                                      </h6>
-                                    </a>
-                                    <div class="fs-13 text-muted">
-                                      <p class="mb-1">
-                                        We talked about a project on linkedin.
-                                      </p>
-                                    </div>
-                                    <p
-                                      class="mb-0 fs-11 fw-medium text-uppercase text-muted"
-                                    >
-                                      <span
-                                        ><i class="mdi mdi-clock-outline"></i> 3 days
-                                        ago</span
-                                      >
-                                    </p>
-                                  </div>
-                                  <div class="px-2 fs-15">
-                                    <div class="form-check notification-check">
-                                      <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        id="messages-notification-check04"
-                                      />
-                                      <label
-                                        class="form-check-label"
-                                        for="messages-notification-check04"
-                                      ></label>
-                                    </div>
-                                  </div>
-                                </div>
                               </div>
 
                               <div class="my-3 text-center view-all">
@@ -1153,73 +1112,23 @@
                         aria-expanded="false"
                       >
                         <span class="d-flex align-items-center">
-                          <img
-                            class="rounded-circle header-profile-user"
-                            src="{{ asset("assets/images/users/avatar-1.jpg") }}"
-                            alt="Header Avatar"
-                          />
                           <span class="text-start ms-xl-2">
                             <span
                               class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"
-                              >Anna Adame</span
-                            >
-                            <span
-                              class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"
-                              >Founder</span
+                              >Company Dashboard</span
                             >
                           </span>
                         </span>
                       </button>
                       <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome Anna!</h6>
-                        <a class="dropdown-item" href="pages-profile.html"
-                          ><i
-                            class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"
-                          ></i>
-                          <span class="align-middle">Profile</span></a
-                        >
-                        <a class="dropdown-item" href="apps-chat.html"
+                        <h6 class="dropdown-header">Company Dashboard</h6>
+
+                        <a class="dropdown-item" href="{{ url('/company-profile') }}"
                           ><i
                             class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"
                           ></i>
-                          <span class="align-middle">Messages</span></a
-                        >
-                        <a class="dropdown-item" href="apps-tasks-kanban.html"
-                          ><i
-                            class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"
-                          ></i>
-                          <span class="align-middle">Taskboard</span></a
-                        >
-                        <a class="dropdown-item" href="pages-faqs.html"
-                          ><i
-                            class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"
-                          ></i>
-                          <span class="align-middle">Help</span></a
-                        >
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="pages-profile.html"
-                          ><i
-                            class="mdi mdi-wallet text-muted fs-16 align-middle me-1"
-                          ></i>
-                          <span class="align-middle"
-                            >Balance : <b>$5971.67</b></span
-                          ></a
-                        >
-                        <a class="dropdown-item" href="pages-profile-settings.html"
-                          ><span
-                            class="badge bg-success-subtle text-success mt-1 float-end"
-                            >New</span
-                          ><i
-                            class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"
-                          ></i>
-                          <span class="align-middle">Settings</span></a
-                        >
-                        <a class="dropdown-item" href="auth-lockscreen-basic.html"
-                          ><i
-                            class="mdi mdi-lock text-muted fs-16 align-middle me-1"
-                          ></i>
-                          <span class="align-middle">Lock screen</span></a
+                          <span class="align-middle">Profile Page</span></a
                         >
                         <a class="dropdown-item" href="{{ url('/Logout') }}"
                           ><i
@@ -1278,7 +1187,7 @@
                       </li>
                       <li class="nav-item">
                           <a class="nav-link menu-link" href="{{ url('/job') }}"aria-expanded="false">
-                              <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Jobs</span>
+                              <i data-feather="ri-briefcase-2-line" class="ri-briefcase-2-line"></i> <span data-key="t-dashboards">Jobs</span>
                           </a>
                       </li>
                       <li class="nav-item">
@@ -1290,6 +1199,12 @@
                       <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ url('/') }}"aria-expanded="false">
                             <i data-feather="las la-plug" class="las la-plug"></i> <span data-key="t-dashboards">Visit Site</span>
+                        </a>
+                    </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ url('/logout') }}"aria-expanded="false">
+                            <i data-feather="ri-logout-box-line" class="ri-logout-box-line"></i> <span data-key="t-dashboards">Log Out</span>
                         </a>
                     </li>
                   </ul>

@@ -14,6 +14,7 @@ use App\Models\Skill;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Swift_TransportException;
 
 class JobsController extends Controller
 {
@@ -107,7 +108,7 @@ class JobsController extends Controller
         $applicants = $query->paginate(5);
         $jobTitle = $applicants->first()->job->title;
 
-        $count_applicants = $applicants->total(); 
+        $count_applicants = $applicants->total();
 
         return view('pages.dashboard.company.applicant-list', compact('applicants', 'count_applicants', 'search','jobTitle'));
     }
@@ -121,29 +122,43 @@ class JobsController extends Controller
     public function hireCandidate($candidate_id, $job_id)
     {
         $candidate = Candidate::find($candidate_id);
-    
+
             ApplicationStatus::create([
                 'job_application_id' => $job_id,
                 'candidate_id' => $candidate_id,
                 'status' => 'hired',
             ]);
-        
+
+        try{
+
         $candidateEmail = $candidate->email;
         $candidateName = $candidate->first_name;
 
-        
+
         Mail::to($candidateEmail)->send(new HiredNotification($candidateName));
-    
+        return redirect()->back()->with('success', 'Candidate hired successfully!');
+
+        } catch (Swift_TransportException $exception){
+            $errorMessage = $exception->getMessage();
+            if (strpos($errorMessage, 'Email does not comply with addr-spec') !== false) {
+                return redirect()->back()->with('error', 'The email address is not valid.');
+            }
+
+            // Rethrow the exception if it's not the expected one
+            throw $exception;
+        }
+
+
     }
     public function rejectApplication($candidate_id, $job_id)
     {
-    
+
             ApplicationStatus::create([
                 'job_application_id' => $job_id,
                 'candidate_id' => $candidate_id,
                 'status' => 'rejected',
             ]);
-    
+
     }
 
 }

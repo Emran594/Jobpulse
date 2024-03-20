@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
+use App\Models\Job;
 use App\Models\JobApplication;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -117,6 +118,12 @@ class CandidateController extends Controller
         }
 
 
+    }
+
+    public function myJobs(Request $request){
+        $id = $request->header('id');
+        $jobs = JobApplication::where('candidate_id','=',$id)->with('job')->get();
+        return view('pages.dashboard.candidate.job-page',compact('jobs'));
     }
 
 }
