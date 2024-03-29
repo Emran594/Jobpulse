@@ -130,6 +130,8 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/delete-skill/{id}',[SkillController::class,'delSkill']);
         Route::post('/update-skill/{id}',[SkillController::class,'updateSkill']);
 
+        Route::get('/candidate-cv/{id}',[CandidateController::class,'candidateCv']);
+
 
     });
 

@@ -38,6 +38,13 @@
                                     @endisset
                                 </div>
                             </div>
+                            <div class="flex-shrink-0">
+                                <div class="hstack text-nowrap gap-2">
+                                    @isset($info)
+                                    <a href="{{ url('/candidate-cv', ['id' => $info->id]) }}" class="btn btn-primary"> View My CV</a>
+                                    @endisset
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

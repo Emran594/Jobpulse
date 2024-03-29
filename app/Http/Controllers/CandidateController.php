@@ -126,4 +126,9 @@ class CandidateController extends Controller
         return view('pages.dashboard.candidate.job-page',compact('jobs'));
     }
 
+    public function candidateCv($id){
+        $candidate = Candidate::with('skills', 'experiences', 'educations')->findOrFail($id);
+        return view('pages.dashboard.candidate.candidate-cv', compact('candidate'));
+    }
+
 }

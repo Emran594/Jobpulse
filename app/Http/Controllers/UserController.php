@@ -61,8 +61,10 @@ class UserController extends Controller
     }
 
 
-    function candidatesDashboard():View{
-     return view('pages.dashboard.candidate.dashboard-page');
+    function candidatesDashboard(Request $request):View{
+     $user_id = $request->header('id');
+     $application = JobApplication::where('candidate_id','=',$user_id)->count();
+     return view('pages.dashboard.candidate.dashboard-page',compact('application'));
     }
 
 
