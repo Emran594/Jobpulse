@@ -53,5 +53,19 @@ class AdminController extends Controller
    public function adminPlugin(){
         return view('pages.dashboard.admin.admin-plugin');
     }
+   public function blogCategory(){
+        return view('pages.dashboard.admin.blog.category-page');
+    }
+   public function blogPage(){
+        return view('pages.dashboard.admin.blog.blog-page');
+    }
+   public function createCategory(){
+        return view('pages.dashboard.admin.blog.category-create');
+    }
+   public function createPost(){
+        return view('pages.dashboard.admin.blog.post-create');
+    }
+
+
 
 }

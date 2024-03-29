@@ -1280,10 +1280,20 @@
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link menu-link" href="{{ url('/admin-blog') }}"aria-expanded="false">
-                              <i data-feather="lab la-blogger" class="lab la-blogger"></i> <span data-key="t-dashboards">Blogs</span>
-                          </a>
-                      </li>
+                        <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                          <i data-feather="lab la-blogger" class="lab la-blogger"></i> <span data-key="t-dashboards">Blogs</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarDashboards">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ url('/blog-category') }}" class="nav-link" data-key="t-analytics"> Blog Category </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/blog-page') }}" class="nav-link" data-key="t-crm"> Create a post </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                       <li class="nav-item">
                           <a class="nav-link menu-link" href="{{ url('/admin-pages') }}"aria-expanded="false">
                               <i data-feather="lab la-pagelines" class="lab la-pagelines"></i> <span data-key="t-dashboards">Pages</span>

@@ -56,6 +56,12 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/admin-plugin',[AdminController::class,'adminPlugin']);
         Route::get('/company-details/{id}',[AdminController::class,'companyDetails']);
         Route::get('/job-details/{id}',[AdminController::class,'jobDetails']);
+        Route::get('/blog-category',[AdminController::class,'blogCategory']);
+        Route::get('/blog-page',[AdminController::class,'blogPage']);
+        Route::get('/category-create',[AdminController::class,'createCategory']);
+        Route::get('/create-post',[AdminController::class,'createPost']);
+
+        
 
 
     });
