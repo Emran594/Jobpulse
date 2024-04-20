@@ -30,34 +30,39 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div>
-                                        <label for="job-title-Input" class="form-label">job Title <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="title" placeholder="Enter job title" required />
+                                        <label for="job-title-Input" class="form-label">Post Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="title" placeholder="Enter post title" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div>
-                                        <label for="job-title-Input" class="form-label">From Date <span class="text-danger">*</span></label>
+                                        <label for="job-title-Input" class="form-label">Publish Date <span class="text-danger">*</span></label>
                                         <input type="date" class="form-control" name="from_date" placeholder="Enter job title" required />
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div>
-                                        <label for="job-title-Input" class="form-label">To Date <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" name="to_date" placeholder="Enter job title" required />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label for="job-title-Input" class="form-label">Description <span class="text-danger">*</span></label>
+                                        <label for="job-title-Input" class="form-label">Post Category <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="description" placeholder="Enter job title" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div>
-                                        <label for="start-salary-Input" class="form-label">responsibility</label>
+                                        <label for="start-salary-Input" class="form-label">Post Description</label>
                                         <input type="text" class="form-control" name="responsibility" placeholder="Enter start salary" required />
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row g-4">
+                                <div class="col-md-12">
+                                    <div>
+                                        <label for="start-salary-Input" class="form-label">Post Image</label>
+                                        <input type="file" class="form-control" name="responsibility" placeholder="Enter start salary" required />
+                                    </div>
+                                </div>
+                            </div>
                                 <div class="col-lg-12">
                                     <div class="hstack justify-content-end gap-2">
                                         <button type="submit" class="btn btn-primary">Save</button>

@@ -93,14 +93,50 @@
                                                 </div>
                                             </th>
 
-                                            <th class="sort" data-sort="customer_name">Degree</th>
-                                            <th class="sort" data-sort="email">Group</th>
-                                            <th class="sort" data-sort="phone">Passing Year</th>
-                                            <th class="sort" data-sort="date">Result</th>
+                                            <th class="sort" data-sort="customer_name">Sl</th>
+                                            <th class="sort" data-sort="email">Post Title</th>
+                                            <th class="sort" data-sort="phone">Post Category</th>
+                                            <th class="sort" data-sort="date">Publish Date</th>
                                             <th class="sort" data-sort="action">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
+                                        <tr>
+                                            <th scope="col" style="width: 50px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option">
+                                                </div>
+                                            </th>
+                                            <td>1</td>
+                                            <td>Design your apps in your own way ?</td>
+                                            <td>1</td>
+                                            <td>20-04-24</td>
+                                            <td><a href="" class="btn btn-primary">Edit</a> <a href="" class="btn btn-danger">Delete</a> </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col" style="width: 50px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option">
+                                                </div>
+                                            </th>
+                                            <td>2</td>
+                                            <td>Smartest Applications for Business ?</td>
+                                            <td>3</td>
+                                            <td>20-04-24</td>
+                                            <td><a href="" class="btn btn-primary">Edit</a> <a href="" class="btn btn-danger">Delete</a> </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col" style="width: 50px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option">
+                                                </div>
+                                            </th>
+                                            <td>3</td>
+                                            <td>How apps is changing the IT world</td>
+                                            <td>2</td>
+                                            <td>20-04-24</td>
+                                            <td><a href="" class="btn btn-primary">Edit</a> <a href="" class="btn btn-danger">Delete</a> </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <div class="noresult" style="display: none">

@@ -93,14 +93,29 @@
                                                 </div>
                                             </th>
 
-                                            <th class="sort" data-sort="customer_name">Degree</th>
-                                            <th class="sort" data-sort="email">Group</th>
-                                            <th class="sort" data-sort="phone">Passing Year</th>
-                                            <th class="sort" data-sort="date">Result</th>
-                                            <th class="sort" data-sort="action">Action</th>
+                                            <th class="sort" data-sort="customer_name">SL</th>
+                                            <th class="sort" data-sort="email">Name</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
+                                        <tr>
+                                            <th scope="col" style="width: 50px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option">
+                                                </div>
+                                            </th>
+                                            <td>1</td>
+                                            <td>Electronics</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col" style="width: 50px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option">
+                                                </div>
+                                            </th>
+                                            <td>2</td>
+                                            <td>Marketing</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <div class="noresult" style="display: none">

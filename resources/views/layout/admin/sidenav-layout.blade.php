@@ -1295,10 +1295,23 @@
                         </div>
                     </li>
                       <li class="nav-item">
-                          <a class="nav-link menu-link" href="{{ url('/admin-pages') }}"aria-expanded="false">
-                              <i data-feather="lab la-pagelines" class="lab la-pagelines"></i> <span data-key="t-dashboards">Pages</span>
-                          </a>
-                      </li>
+                        <a class="nav-link menu-link" href="#pages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                          <i data-feather="lab la-pagelines" class="lab la-pagelines"></i> <span data-key="t-dashboards">Pages</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="pages">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ url('/blog-category') }}" class="nav-link" data-key="t-analytics"> About Page </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/blog-page') }}" class="nav-link" data-key="t-crm"> Blog Page </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/blog-page') }}" class="nav-link" data-key="t-crm"> Contact Page </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                       <li class="nav-item">
                           <a class="nav-link menu-link" href="{{ url('/admin-plugin') }}"aria-expanded="false">
                               <i data-feather="las la-plug" class="las la-plug"></i> <span data-key="t-dashboards">Plugins</span>
