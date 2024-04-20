@@ -1301,22 +1301,17 @@
                         <div class="collapse menu-dropdown" id="pages">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ url('/blog-category') }}" class="nav-link" data-key="t-analytics"> About Page </a>
+                                    <a href="{{ url('/about-page') }}" class="nav-link" data-key="t-analytics"> About Page </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('/blog-page') }}" class="nav-link" data-key="t-crm"> Blog Page </a>
+                                    <a href="{{ url('/blogs-page') }}" class="nav-link" data-key="t-crm"> Blog Page </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('/blog-page') }}" class="nav-link" data-key="t-crm"> Contact Page </a>
+                                    <a href="{{ url('/contact-page') }}" class="nav-link" data-key="t-crm"> Contact Page </a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                      <li class="nav-item">
-                          <a class="nav-link menu-link" href="{{ url('/admin-plugin') }}"aria-expanded="false">
-                              <i data-feather="las la-plug" class="las la-plug"></i> <span data-key="t-dashboards">Plugins</span>
-                          </a>
-                      </li>
                   </ul>
               </div>
           </div>
