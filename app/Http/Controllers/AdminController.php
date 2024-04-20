@@ -66,6 +66,16 @@ class AdminController extends Controller
         return view('pages.dashboard.admin.blog.post-create');
     }
 
+    public function aboutPage(){
+        return view('pages.dashboard.admin.pages.about-page');
+    }
+    public function blogsPage(){
+        return view('pages.dashboard.admin.pages.blog-page');
+    }
+    public function contactPage(){
+        return view('pages.dashboard.admin.pages.contact-page');
+    }
+
 
 
 }

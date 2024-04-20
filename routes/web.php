@@ -61,8 +61,10 @@ Route::group(['middleware' => 'login'], function () {
         Route::get('/category-create',[AdminController::class,'createCategory']);
         Route::get('/create-post',[AdminController::class,'createPost']);
 
-        
 
+        Route::get('/about-page',[AdminController::class,'aboutPage']);
+        Route::get('/blogs-page',[AdminController::class,'blogsPage']);
+        Route::get('/contact-page',[AdminController::class,'contactPage']);
 
     });
 
