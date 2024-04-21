@@ -12,20 +12,20 @@
         <!-- end row -->
 
         <div class="row">
+            @if(session('success'))
+            <div class="alert alert-success">
+            {{ session('success') }}
+            </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+        @endif
             @isset($data)
 
             @foreach ($data as $item)
-            @if(session('success'))
-                <div class="alert alert-success">
-                {{ session('success') }}
-                </div>
-                @endif
-
-                @if(session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
             <div class="col-lg-6">
                 <div class="card shadow-lg">
                     <div class="card-body">
