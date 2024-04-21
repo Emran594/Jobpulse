@@ -6,7 +6,7 @@
 
     <!-- start hero section -->
 
-    @include('components.frontend.section-hero')
+    @include('components.frontend.blog-hero')
     <!-- end hero section -->
 
 

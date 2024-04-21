@@ -4,9 +4,7 @@
     @include('components.frontend.header')
     <!-- end navbar -->
 
-    <!-- start hero section -->
-
-    @include('components.frontend.section-hero')
+    @include('components.frontend.about-hero')
     <!-- end hero section -->
 
 
@@ -16,16 +14,6 @@
     <!-- end services -->
     @include('components.frontend.section-category')
     <!-- start cta -->
-
-    <!-- end cta -->
-
-
-    <!-- start blog -->
-
-    <!-- end blog -->
-
-
-    <!-- Start footer -->
 
     @include('components.frontend.footer')
     <!-- end footer -->
