@@ -14,7 +14,7 @@ class AdminController extends Controller
         if($search != ""){
             $company = Companie::where('name', 'like', "%$search%")->get();
         }else{
-        $company = Companie::paginate(2);
+        $company = Companie::paginate(10);
         }
         $count_company = Companie::count();
         return view('pages.dashboard.admin.admin-company',compact('company','count_company','search'));
@@ -34,7 +34,7 @@ class AdminController extends Controller
         if($search != ""){
             $job = Job::where('name', 'like', "%$search%")->get();
         }else{
-        $job = Job::paginate(2);
+        $job = Job::paginate(10);
         }
         $count_job = Job::count();
         $vacancy = Job::sum('vacancy');

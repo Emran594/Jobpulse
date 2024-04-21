@@ -1193,7 +1193,7 @@
                     </li>
 
                       <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ url('/logout') }}"aria-expanded="false">
+                        <a class="nav-link menu-link" href="{{ url('/Logout') }}"aria-expanded="false">
                             <i data-feather="ri-logout-box-line" class="ri-logout-box-line"></i> <span data-key="t-dashboards">Log Out</span>
                         </a>
                     </li>
